@@ -11,3 +11,9 @@ https://asheracordova.github.io/doc/help-doc.html
 https://asheracordova.github.io/doc/com/ashera/plugin/Border.html
 
 https://asheracordova.github.io/playground/index.html
+
+To install the plugin use:
+
+```
+cordova plugin add https://github.com/AsheraCordova/CSSBorder.git
+```
