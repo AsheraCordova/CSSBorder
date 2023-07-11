@@ -41,6 +41,7 @@ public class BorderViewImpl implements com.ashera.widget.IAttributable {
 	@Override
 	public void loadAttributes(String localName) {
 
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("webUseBoxShadowForBorder").withType("boolean").withOrder(-999).withDecorator("border"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("borderWidth").withType("dimension").withDecorator("border").withUiFlag(UPDATE_UI_REQUEST_LAYOUT_N_INVALIDATE));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("borderColor").withType("colorstate").withDecorator("border").withUiFlag(UPDATE_UI_REQUEST_LAYOUT_N_INVALIDATE));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("borderStyle").withType("string").withDecorator("border").withUiFlag(UPDATE_UI_REQUEST_LAYOUT_N_INVALIDATE));
@@ -69,6 +70,15 @@ public class BorderViewImpl implements com.ashera.widget.IAttributable {
 		View view = (View) w.asWidget();
 		org.teavm.jso.dom.html.HTMLElement hTMLElement = (org.teavm.jso.dom.html.HTMLElement) w.asNativeWidget();
 		switch (key.getAttributeName()) {
+		case "webUseBoxShadowForBorder": {
+
+
+		 //
+
+
+
+			}
+			break;
 		case "borderWidth": {
 
 
@@ -327,6 +337,14 @@ public  class BorderViewCommandBuilder extends com.ashera.layout.ViewImpl.ViewCo
 		w.executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
 return this;	}
 
+public BorderViewCommandBuilder setWebUseBoxShadowForBorder(boolean value) {
+	Map<String, Object> attrs = initCommand("webUseBoxShadowForBorder");
+	attrs.put("type", "attribute");
+	attrs.put("setter", true);
+	attrs.put("orderSet", ++orderSet);
+
+	attrs.put("value", value);
+return this;}
 public BorderViewCommandBuilder setBorderWidth(String value) {
 	Map<String, Object> attrs = initCommand("borderWidth");
 	attrs.put("type", "attribute");
@@ -668,6 +686,10 @@ public class BorderViewBean extends com.ashera.layout.ViewImpl.ViewBean{
 		public BorderViewBean() {
 			super(BorderViewImpl.this.w);
 		}
+public void setWebUseBoxShadowForBorder(boolean value) {
+	getBuilder().reset().setWebUseBoxShadowForBorder(value).execute(true);
+}
+
 public void setBorderWidth(String value) {
 	getBuilder().reset().setBorderWidth(value).execute(true);
 }

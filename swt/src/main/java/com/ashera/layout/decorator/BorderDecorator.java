@@ -1046,7 +1046,12 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		if (isNoClip()) {
 			return value;
 		}
-		Rectangle rect = control.getBounds();   
+		
+		Rectangle rect = control.getBounds();
+		if (rect.width == 0 || rect.height == 0) {
+			return value;
+		}
+
 		Image image = new Image(null, rect.width, rect.height);
         widget.getFragment().addDisposable(image);
 

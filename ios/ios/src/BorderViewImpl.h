@@ -346,7 +346,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setOnLongClickWithNSString:(NSString *)arg0;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setOnSwipedWithNSString:(NSString *)arg0;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setOnTouchWithNSString:(NSString *)arg0;
+
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 

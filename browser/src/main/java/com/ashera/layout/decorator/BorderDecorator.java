@@ -35,12 +35,99 @@ public class BorderDecorator implements ILifeCycleDecorator {
 	public BorderDecorator() {
 	}
 	
+	private void setBorderProperty(String property, String value) {
+		Object webUseBoxShadowForBorder = widget.getFromTempCache("webUseBoxShadowForBorder");
+		
+		if (webUseBoxShadowForBorder == null || (boolean) webUseBoxShadowForBorder == false) {
+			htmlElement.getStyle().setProperty(property, value);
+		} else {
+			if (property.indexOf("radius") != -1) {
+				htmlElement.getStyle().setProperty(property, value);
+			} else {
+				htmlElement.setAttribute(property, value);
+				useBoxShadowForBorder();
+			}
+		}
+	}
+	
+	private void useBoxShadowForBorder() {
+		String boxShadowTemplate = "inset 0 %s 0 0 %s, inset 0 -%s 0 0 %s, inset %s 0 0 %s, inset -%s 0 0 %s";
+		
+		String borderWidth = htmlElement.getAttribute("border-width");
+		
+		if (borderWidth == null) {
+			borderWidth = "0px";
+		}
+		
+		String borderTopWidth = htmlElement.getAttribute("border-top-width");
+		String borderBottomWidth = htmlElement.getAttribute("border-bottom-width");
+		String borderLeftWidth = htmlElement.getAttribute("border-left-width");
+		String borderRightWidth = htmlElement.getAttribute("border-right-width");
+				
+		if (borderTopWidth == null) {
+			borderTopWidth = borderWidth;
+		}
+		
+		if (borderBottomWidth == null) {
+			borderBottomWidth = borderWidth;
+		}
+		
+		if (borderLeftWidth == null) {
+			borderLeftWidth = borderWidth;
+		}
+		
+		if (borderRightWidth == null) {
+			borderRightWidth = borderWidth;
+		}
+		
+		String borderColor = htmlElement.getAttribute("border-color");
+		
+		if (borderColor == null) {
+			borderColor = "black";
+		}
+		
+		String borderTopColor = htmlElement.getAttribute("border-top-color");
+		String borderBottomColor = htmlElement.getAttribute("border-bottom-color");
+		String borderLeftColor = htmlElement.getAttribute("border-left-color");
+		String borderRightColor = htmlElement.getAttribute("border-right-color");
+				
+		if (borderTopColor == null) {
+			borderTopColor = borderColor;
+		}
+		
+		if (borderBottomColor == null) {
+			borderBottomColor = borderColor;
+		}
+		
+		if (borderLeftColor == null) {
+			borderLeftColor = borderColor;
+		}
+		
+		if (borderRightColor == null) {
+			borderRightColor = borderColor;
+		}
+		
+		
+		String finalValue = String.format(boxShadowTemplate, 
+				borderTopWidth, borderTopColor,
+				borderBottomWidth, borderBottomColor,
+				borderLeftWidth, borderLeftColor,
+				borderRightWidth, borderRightColor
+				);
+		
+		htmlElement.getStyle().setProperty("box-shadow", finalValue);
+	}
+
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue) {
 		String attributeName = key.getAttributeName();
 		switch (attributeName) {
+		case "webUseBoxShadowForBorder": {
+			widget.storeInTempCache("webUseBoxShadowForBorder", objValue);
+		}
+			break;
 		case "borderWidth": {
-			htmlElement.getStyle().setProperty("border-width", ((int) objValue) + "px");
+			setBorderProperty("border-width", ((int) objValue) + "px");
 		}
 			break;
 		case "borderColor": {
@@ -50,7 +137,7 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		}
 			break;
 		case "borderStyle": {
-			htmlElement.getStyle().setProperty("border-style", strValue);
+			setBorderProperty("border-style", strValue);
 
 		}
 			break;
@@ -66,13 +153,13 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		break;
 		case "borderRadius": {
 
-			htmlElement.getStyle().setProperty("border-radius", ((float) objValue) + "px");
+			setBorderProperty("border-radius", ((float) objValue) + "px");
 
 		}
 			break;
 		case "borderTopWidth": {
 
-			htmlElement.getStyle().setProperty("border-top-width", ((int) objValue) + "px");
+			setBorderProperty("border-top-width", ((int) objValue) + "px");
 
 		}
 			break;
@@ -82,7 +169,7 @@ public class BorderDecorator implements ILifeCycleDecorator {
 			break;
 		case "borderTopStyle": {
 
-			htmlElement.getStyle().setProperty("border-top-style", strValue);
+			setBorderProperty("border-top-style", strValue);
 
 		}
 			break;
@@ -99,9 +186,9 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		case "borderTopLeftRadius": {
 
 			if (ViewImpl.isRTLLayout(widget)) {
-				htmlElement.getStyle().setProperty("border-top-right-radius", ((float) objValue) + "px");
+				setBorderProperty("border-top-right-radius", ((float) objValue) + "px");
 			} else {
-				htmlElement.getStyle().setProperty("border-top-left-radius", ((float) objValue) + "px");
+				setBorderProperty("border-top-left-radius", ((float) objValue) + "px");
 			}
 
 		}
@@ -109,16 +196,16 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		case "borderTopRightRadius": {
 
 			if (!ViewImpl.isRTLLayout(widget)) {
-				htmlElement.getStyle().setProperty("border-top-right-radius", ((float) objValue) + "px");
+				setBorderProperty("border-top-right-radius", ((float) objValue) + "px");
 			} else {
-				htmlElement.getStyle().setProperty("border-top-left-radius", ((float) objValue) + "px");
+				setBorderProperty("border-top-left-radius", ((float) objValue) + "px");
 			}
 
 		}
 			break;
 		case "borderBottomWidth": {
 
-			htmlElement.getStyle().setProperty("border-bottom-width", ((int) objValue) + "px");
+			setBorderProperty("border-bottom-width", ((int) objValue) + "px");
 
 		}
 			break;
@@ -129,7 +216,7 @@ public class BorderDecorator implements ILifeCycleDecorator {
 			break;
 		case "borderBottomStyle": {
 
-			htmlElement.getStyle().setProperty("border-bottom-style", strValue);
+			setBorderProperty("border-bottom-style", strValue);
 
 		}
 			break;
@@ -144,9 +231,9 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		case "borderBottomLeftRadius": {
 
 			if (ViewImpl.isRTLLayout(widget)) {
-				htmlElement.getStyle().setProperty("border-bottom-right-radius", ((float) objValue) + "px");
+				setBorderProperty("border-bottom-right-radius", ((float) objValue) + "px");
 			} else {
-				htmlElement.getStyle().setProperty("border-bottom-left-radius", ((float) objValue) + "px");
+				setBorderProperty("border-bottom-left-radius", ((float) objValue) + "px");
 			}
 
 		}
@@ -154,18 +241,18 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		case "borderBottomRightRadius": {
 
 			if (!ViewImpl.isRTLLayout(widget)) {
-				htmlElement.getStyle().setProperty("border-bottom-right-radius", ((float) objValue) + "px");
+				setBorderProperty("border-bottom-right-radius", ((float) objValue) + "px");
 			} else {
-				htmlElement.getStyle().setProperty("border-bottom-left-radius", ((float) objValue) + "px");
+				setBorderProperty("border-bottom-left-radius", ((float) objValue) + "px");
 			}
 
 		}
 			break;
 		case "borderLeftWidth": {
 			if (ViewImpl.isRTLLayout(widget)) {
-				htmlElement.getStyle().setProperty("border-right-width", ((int) objValue) + "px");
+				setBorderProperty("border-right-width", ((int) objValue) + "px");
 			} else {
-				htmlElement.getStyle().setProperty("border-left-width", ((int) objValue) + "px");
+				setBorderProperty("border-left-width", ((int) objValue) + "px");
 			}
 
 		}
@@ -181,9 +268,9 @@ public class BorderDecorator implements ILifeCycleDecorator {
 			break;
 		case "borderLeftStyle": {
 			if (ViewImpl.isRTLLayout(widget)) {
-				htmlElement.getStyle().setProperty("border-right-style", strValue);
+				setBorderProperty("border-right-style", strValue);
 			} else {
-				htmlElement.getStyle().setProperty("border-left-style", strValue);
+				setBorderProperty("border-left-style", strValue);
 			}
 
 		}
@@ -200,9 +287,9 @@ public class BorderDecorator implements ILifeCycleDecorator {
 			break;
 		case "borderRightWidth": {
 			if (!ViewImpl.isRTLLayout(widget)) {
-				htmlElement.getStyle().setProperty("border-right-width", ((int) objValue) + "px");
+				setBorderProperty("border-right-width", ((int) objValue) + "px");
 			} else {
-				htmlElement.getStyle().setProperty("border-left-width", ((int) objValue) + "px");
+				setBorderProperty("border-left-width", ((int) objValue) + "px");
 			}
 
 		}
@@ -221,9 +308,9 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		case "borderRightStyle": {
 
 			if (!ViewImpl.isRTLLayout(widget)) {
-				htmlElement.getStyle().setProperty("border-right-style", strValue);
+				setBorderProperty("border-right-style", strValue);
 			} else {
-				htmlElement.getStyle().setProperty("border-left-style", strValue);
+				setBorderProperty("border-left-style", strValue);
 			}
 
 		}
@@ -244,36 +331,36 @@ public class BorderDecorator implements ILifeCycleDecorator {
 	private void updateBorderStyle() {
 		if (!isPropertySet("border-style") && (isPropertySet("border-color") || isPropertySet("border-width") || isPropertySet("border-radius"))) {
 			if (!isPropertySet("border-bottom-style")) {
-				htmlElement.getStyle().setProperty("border-bottom-style", "solid");
+				setBorderProperty("border-bottom-style", "solid");
 			}
 			
 			if (!isPropertySet("border-top-style")) {
-				htmlElement.getStyle().setProperty("border-top-style", "solid");
+				setBorderProperty("border-top-style", "solid");
 			}
 			
 			if (!isPropertySet("border-left-style")) {
-				htmlElement.getStyle().setProperty("border-left-style", "solid");
+				setBorderProperty("border-left-style", "solid");
 			}
 			
 			if (!isPropertySet("border-right-style")) {
-				htmlElement.getStyle().setProperty("border-right-style", "solid");
+				setBorderProperty("border-right-style", "solid");
 			}
 		}
 		
 		if (!isPropertySet("border-bottom-style") && (isPropertySet("border-bottom-color") || isPropertySet("border-bottom-width") || isPropertySet("border-bottom-radius"))) {
-			htmlElement.getStyle().setProperty("border-bottom-style", "solid");
+			setBorderProperty("border-bottom-style", "solid");
 		}
 		
 		if (!isPropertySet("border-top-style") && (isPropertySet("border-top-color") || isPropertySet("border-top-width") || isPropertySet("border-top-radius"))) {
-			htmlElement.getStyle().setProperty("border-top-style", "solid");
+			setBorderProperty("border-top-style", "solid");
 		}
 		
 		if (!isPropertySet("border-left-style") && (isPropertySet("border-left-color") || isPropertySet("border-left-width") || isPropertySet("border-left-radius"))) {
-			htmlElement.getStyle().setProperty("border-left-style", "solid");
+			setBorderProperty("border-left-style", "solid");
 		}
 		
 		if (!isPropertySet("border-right-style") && (isPropertySet("border-right-color") || isPropertySet("border-right-width") || isPropertySet("border-right-radius"))) {
-			htmlElement.getStyle().setProperty("border-right-style", "solid");
+			setBorderProperty("border-right-style", "solid");
 		}
 	}
 
@@ -290,7 +377,7 @@ public class BorderDecorator implements ILifeCycleDecorator {
 			colorMap.put(attributeName, colorStateList);
 		}
 		
-		htmlElement.getStyle().setProperty(property, (String) ViewImpl.getColor(objValue));
+		setBorderProperty(property, (String) ViewImpl.getColor(objValue));
 	}
 
 	@Override

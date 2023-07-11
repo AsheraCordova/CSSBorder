@@ -36,12 +36,16 @@ import { ScopedObject } from '../../app/ScopedObject';
 
 
 
+
 // end - imports
 import {ViewImpl} from './ViewImpl';
 export abstract class BorderViewImpl<T> extends ViewImpl<T>{
 	//start - body
 	static initialize() {
     }	
+	@Type(() => CommandAttr)
+	@Expose({ name: "webUseBoxShadowForBorder" })
+	webUseBoxShadowForBorder!:CommandAttr<boolean>| undefined;
 	@Type(() => CommandAttr)
 	@Expose({ name: "borderWidth" })
 	borderWidth!:CommandAttr<string>| undefined;
@@ -108,6 +112,7 @@ export abstract class BorderViewImpl<T> extends ViewImpl<T>{
 	protected abstract getThisPointer(): T;
 	reset() : T {	
 		super.reset();
+		this.webUseBoxShadowForBorder = undefined;
 		this.borderWidth = undefined;
 		this.borderColor = undefined;
 		this.borderStyle = undefined;
@@ -135,6 +140,20 @@ export abstract class BorderViewImpl<T> extends ViewImpl<T>{
 		this.thisPointer = this.getThisPointer();
 	}
 	
+
+	public setWebUseBoxShadowForBorder(value : boolean) : T {
+		this.resetIfRequired();
+		if (this.webUseBoxShadowForBorder == null || this.webUseBoxShadowForBorder == undefined) {
+			this.webUseBoxShadowForBorder = new CommandAttr<boolean>();
+		}
+		
+		this.webUseBoxShadowForBorder.setSetter(true);
+		this.webUseBoxShadowForBorder.setValue(value);
+		this.orderSet++;
+		this.webUseBoxShadowForBorder.setOrderSet(this.orderSet);
+		return this.thisPointer;
+	}
+		
 
 	public setBorderWidth(value : string) : T {
 		this.resetIfRequired();
