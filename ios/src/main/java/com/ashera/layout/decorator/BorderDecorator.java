@@ -53,6 +53,11 @@ public class BorderDecorator implements ILifeCycleDecorator {
 	}
 	
 	@Override
+	public IWidget getWidget() {
+		return widget;
+	}
+	
+	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue) {
 		switch (key.getAttributeName()) {
 		case "borderWidth": {

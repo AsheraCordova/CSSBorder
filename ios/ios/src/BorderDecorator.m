@@ -347,6 +347,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
+- (id<ASIWidget>)getWidget {
+  return widget_;
+}
+
 - (void)setAttributeWithASWidgetAttribute:(ASWidgetAttribute *)key
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue {
@@ -1311,6 +1315,7 @@ withASBorderDecorator_Arc:(ASBorderDecorator_Arc *)arc {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "LASILifeCycleDecorator;", 0x1, 0, 1, -1, -1, -1, -1 },
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LASIWidget;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 2, 3, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x1, 4, 5, -1, -1, -1, -1 },
     { NULL, "LJavaUtilList;", 0x1, -1, -1, -1, 6, -1, -1 },
@@ -1412,101 +1417,102 @@ withASBorderDecorator_Arc:(ASBorderDecorator_Arc *)arc {
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(newInstanceWithASIWidget:);
   methods[1].selector = @selector(init);
-  methods[2].selector = @selector(setAttributeWithASWidgetAttribute:withNSString:withId:);
-  methods[3].selector = @selector(getAttributeWithASWidgetAttribute:);
-  methods[4].selector = @selector(getMethods);
-  methods[5].selector = @selector(initBorderTop);
-  methods[6].selector = @selector(initBorderLeft);
-  methods[7].selector = @selector(initBorderRight);
-  methods[8].selector = @selector(initBorderBottom);
-  methods[9].selector = @selector(createBorderStyleWithNSString:);
-  methods[10].selector = @selector(createBorderDashSpacingWithInt:);
-  methods[11].selector = @selector(createBorderDashWidthWithInt:);
-  methods[12].selector = @selector(createBorderColorWithId:);
-  methods[13].selector = @selector(createBorderWidthWithInt:);
-  methods[14].selector = @selector(createBorderRadiusWithFloat:);
-  methods[15].selector = @selector(createBorderColorBottomWithId:);
-  methods[16].selector = @selector(createBorderColorTopWithId:);
-  methods[17].selector = @selector(createBorderColorLeftWithId:);
-  methods[18].selector = @selector(createBorderColorLeftInternalWithId:);
-  methods[19].selector = @selector(createBorderColorRightWithId:);
-  methods[20].selector = @selector(createBorderColorRightInternalWithId:);
-  methods[21].selector = @selector(createBorderWidthRightWithInt:);
-  methods[22].selector = @selector(createBorderWidthRightInternalWithInt:);
-  methods[23].selector = @selector(createBorderWidthTopWithInt:);
-  methods[24].selector = @selector(createBorderWidthBottomWithInt:);
-  methods[25].selector = @selector(createBorderWidthLeftWithInt:);
-  methods[26].selector = @selector(createBorderWidthLeftInternalWithInt:);
-  methods[27].selector = @selector(createBorderStyleTopWithNSString:);
-  methods[28].selector = @selector(createBorderDashSpacingTopWithInt:);
-  methods[29].selector = @selector(createBorderDashWidthTopWithInt:);
-  methods[30].selector = @selector(createBorderStyleBottomWithNSString:);
-  methods[31].selector = @selector(createBorderDashSpacingBottomWithInt:);
-  methods[32].selector = @selector(createBorderDashWidthBottomWithInt:);
-  methods[33].selector = @selector(createBorderStyleLeftWithNSString:);
-  methods[34].selector = @selector(createBorderStyleLeftInternalWithNSString:);
-  methods[35].selector = @selector(createBorderDashSpacingLeftWithInt:);
-  methods[36].selector = @selector(createBorderDashSpacingLeftInternalWithInt:);
-  methods[37].selector = @selector(createBorderDashWidthLeftWithInt:);
-  methods[38].selector = @selector(createBorderDashWidthLeftInternalWithInt:);
-  methods[39].selector = @selector(createBorderStyleRightWithNSString:);
-  methods[40].selector = @selector(createBorderStyleRightInternalWithNSString:);
-  methods[41].selector = @selector(createBorderDashSpacingRightWithInt:);
-  methods[42].selector = @selector(createBorderDashSpacingRightInternalWithInt:);
-  methods[43].selector = @selector(createBorderDashWidthRightWithInt:);
-  methods[44].selector = @selector(createBorderDashWidthRightInternalWithInt:);
-  methods[45].selector = @selector(createBorderRadiusTopLeftWithFloat:);
-  methods[46].selector = @selector(createBorderRadiusTopLeftInternalWithFloat:);
-  methods[47].selector = @selector(createBorderRadiusTopRightWithFloat:);
-  methods[48].selector = @selector(createBorderRadiusTopRightInternalWithFloat:);
-  methods[49].selector = @selector(createBorderRadiusBottomLeftWithFloat:);
-  methods[50].selector = @selector(createBorderRadiusBottomLeftInternalWithFloat:);
-  methods[51].selector = @selector(createBorderRadiusBottomRightWithFloat:);
-  methods[52].selector = @selector(createBorderRadiusBottomRightInternalWithFloat:);
-  methods[53].selector = @selector(createBorderWithFloat:withFloat:withFloat:withFloat:withId:withId:withId:withASBorder:withNSString:);
-  methods[54].selector = @selector(createArcWithFloat:withFloat:withFloat:withFloat:withASBorder:withId:withNSString:);
-  methods[55].selector = @selector(createArcWithFloat:withFloat:withFloat:withFloat:withASBorder:withId:withNSString:withBoolean:);
-  methods[56].selector = @selector(hasRadiusWithASBorder:);
-  methods[57].selector = @selector(isBorderNotPresent);
-  methods[58].selector = @selector(createBorderBottomWithId:withId:withId:withInt:withInt:withInt:);
-  methods[59].selector = @selector(createBorderRightWithId:withId:withId:withInt:withInt:withInt:);
-  methods[60].selector = @selector(createBorderLeftWithId:withId:withId:withInt:withInt:withInt:);
-  methods[61].selector = @selector(createBorderTopWithId:withId:withId:withInt:withInt:withInt:);
-  methods[62].selector = @selector(getOffsetWithASBorder:withNSString:);
-  methods[63].selector = @selector(useCornerRadius);
-  methods[64].selector = @selector(createArcFullPathWithId:withADView:);
-  methods[65].selector = @selector(invalidate);
-  methods[66].selector = @selector(isNoClip);
-  methods[67].selector = @selector(initialized);
-  methods[68].selector = @selector(executeWithNSString:withNSObjectArray:);
-  methods[69].selector = @selector(createMask);
-  methods[70].selector = @selector(setMaskLayerWithId:withId:);
-  methods[71].selector = @selector(drawRectWithId:);
-  methods[72].selector = @selector(nativeCreateBorderLeftWithASBorder:withId:);
-  methods[73].selector = @selector(nativeCreateBorderRightWithASBorder:withId:);
-  methods[74].selector = @selector(nativeCreateBorderTopWithASBorder:withId:);
-  methods[75].selector = @selector(nativeCreateBorderBottomWithASBorder:withId:);
-  methods[76].selector = @selector(resetWithId:withId:);
-  methods[77].selector = @selector(setDefaultColorWithASBorderDecorator:);
-  methods[78].selector = @selector(drawPathWithId:withId:withId:);
-  methods[79].selector = @selector(setColorAndWidthWithId:withId:withId:withInt:);
-  methods[80].selector = @selector(nativeSetColorAndWidthWithId:withId:withId:withInt:);
-  methods[81].selector = @selector(setDottedEffectWithId:withId:withInt:withInt:);
-  methods[82].selector = @selector(setDashedEffectWithId:withId:withInt:withInt:);
-  methods[83].selector = @selector(nativeInvalidateWithId:);
-  methods[84].selector = @selector(createMaskLayerWithId:withBoolean:);
-  methods[85].selector = @selector(setCornerRadiusOnSuperViewWithFloat:);
-  methods[86].selector = @selector(setCornerRadiusOnViewWithFloat:);
-  methods[87].selector = @selector(setFrameWithId:);
-  methods[88].selector = @selector(quadToWithId:withFloat:withFloat:withFloat:withFloat:);
-  methods[89].selector = @selector(moveToWithId:withFloat:withFloat:);
-  methods[90].selector = @selector(lineToWithId:withFloat:withFloat:);
-  methods[91].selector = @selector(arcToWithId:withASBorderDecorator_Arc:);
-  methods[92].selector = @selector(closePathWithId:);
-  methods[93].selector = @selector(addCommandIfNeeded);
-  methods[94].selector = @selector(adjustOffsetWithNSString:withFloat:);
-  methods[95].selector = @selector(drawableStateChanged);
-  methods[96].selector = @selector(isBorderStatefulWithASBorder:);
+  methods[2].selector = @selector(getWidget);
+  methods[3].selector = @selector(setAttributeWithASWidgetAttribute:withNSString:withId:);
+  methods[4].selector = @selector(getAttributeWithASWidgetAttribute:);
+  methods[5].selector = @selector(getMethods);
+  methods[6].selector = @selector(initBorderTop);
+  methods[7].selector = @selector(initBorderLeft);
+  methods[8].selector = @selector(initBorderRight);
+  methods[9].selector = @selector(initBorderBottom);
+  methods[10].selector = @selector(createBorderStyleWithNSString:);
+  methods[11].selector = @selector(createBorderDashSpacingWithInt:);
+  methods[12].selector = @selector(createBorderDashWidthWithInt:);
+  methods[13].selector = @selector(createBorderColorWithId:);
+  methods[14].selector = @selector(createBorderWidthWithInt:);
+  methods[15].selector = @selector(createBorderRadiusWithFloat:);
+  methods[16].selector = @selector(createBorderColorBottomWithId:);
+  methods[17].selector = @selector(createBorderColorTopWithId:);
+  methods[18].selector = @selector(createBorderColorLeftWithId:);
+  methods[19].selector = @selector(createBorderColorLeftInternalWithId:);
+  methods[20].selector = @selector(createBorderColorRightWithId:);
+  methods[21].selector = @selector(createBorderColorRightInternalWithId:);
+  methods[22].selector = @selector(createBorderWidthRightWithInt:);
+  methods[23].selector = @selector(createBorderWidthRightInternalWithInt:);
+  methods[24].selector = @selector(createBorderWidthTopWithInt:);
+  methods[25].selector = @selector(createBorderWidthBottomWithInt:);
+  methods[26].selector = @selector(createBorderWidthLeftWithInt:);
+  methods[27].selector = @selector(createBorderWidthLeftInternalWithInt:);
+  methods[28].selector = @selector(createBorderStyleTopWithNSString:);
+  methods[29].selector = @selector(createBorderDashSpacingTopWithInt:);
+  methods[30].selector = @selector(createBorderDashWidthTopWithInt:);
+  methods[31].selector = @selector(createBorderStyleBottomWithNSString:);
+  methods[32].selector = @selector(createBorderDashSpacingBottomWithInt:);
+  methods[33].selector = @selector(createBorderDashWidthBottomWithInt:);
+  methods[34].selector = @selector(createBorderStyleLeftWithNSString:);
+  methods[35].selector = @selector(createBorderStyleLeftInternalWithNSString:);
+  methods[36].selector = @selector(createBorderDashSpacingLeftWithInt:);
+  methods[37].selector = @selector(createBorderDashSpacingLeftInternalWithInt:);
+  methods[38].selector = @selector(createBorderDashWidthLeftWithInt:);
+  methods[39].selector = @selector(createBorderDashWidthLeftInternalWithInt:);
+  methods[40].selector = @selector(createBorderStyleRightWithNSString:);
+  methods[41].selector = @selector(createBorderStyleRightInternalWithNSString:);
+  methods[42].selector = @selector(createBorderDashSpacingRightWithInt:);
+  methods[43].selector = @selector(createBorderDashSpacingRightInternalWithInt:);
+  methods[44].selector = @selector(createBorderDashWidthRightWithInt:);
+  methods[45].selector = @selector(createBorderDashWidthRightInternalWithInt:);
+  methods[46].selector = @selector(createBorderRadiusTopLeftWithFloat:);
+  methods[47].selector = @selector(createBorderRadiusTopLeftInternalWithFloat:);
+  methods[48].selector = @selector(createBorderRadiusTopRightWithFloat:);
+  methods[49].selector = @selector(createBorderRadiusTopRightInternalWithFloat:);
+  methods[50].selector = @selector(createBorderRadiusBottomLeftWithFloat:);
+  methods[51].selector = @selector(createBorderRadiusBottomLeftInternalWithFloat:);
+  methods[52].selector = @selector(createBorderRadiusBottomRightWithFloat:);
+  methods[53].selector = @selector(createBorderRadiusBottomRightInternalWithFloat:);
+  methods[54].selector = @selector(createBorderWithFloat:withFloat:withFloat:withFloat:withId:withId:withId:withASBorder:withNSString:);
+  methods[55].selector = @selector(createArcWithFloat:withFloat:withFloat:withFloat:withASBorder:withId:withNSString:);
+  methods[56].selector = @selector(createArcWithFloat:withFloat:withFloat:withFloat:withASBorder:withId:withNSString:withBoolean:);
+  methods[57].selector = @selector(hasRadiusWithASBorder:);
+  methods[58].selector = @selector(isBorderNotPresent);
+  methods[59].selector = @selector(createBorderBottomWithId:withId:withId:withInt:withInt:withInt:);
+  methods[60].selector = @selector(createBorderRightWithId:withId:withId:withInt:withInt:withInt:);
+  methods[61].selector = @selector(createBorderLeftWithId:withId:withId:withInt:withInt:withInt:);
+  methods[62].selector = @selector(createBorderTopWithId:withId:withId:withInt:withInt:withInt:);
+  methods[63].selector = @selector(getOffsetWithASBorder:withNSString:);
+  methods[64].selector = @selector(useCornerRadius);
+  methods[65].selector = @selector(createArcFullPathWithId:withADView:);
+  methods[66].selector = @selector(invalidate);
+  methods[67].selector = @selector(isNoClip);
+  methods[68].selector = @selector(initialized);
+  methods[69].selector = @selector(executeWithNSString:withNSObjectArray:);
+  methods[70].selector = @selector(createMask);
+  methods[71].selector = @selector(setMaskLayerWithId:withId:);
+  methods[72].selector = @selector(drawRectWithId:);
+  methods[73].selector = @selector(nativeCreateBorderLeftWithASBorder:withId:);
+  methods[74].selector = @selector(nativeCreateBorderRightWithASBorder:withId:);
+  methods[75].selector = @selector(nativeCreateBorderTopWithASBorder:withId:);
+  methods[76].selector = @selector(nativeCreateBorderBottomWithASBorder:withId:);
+  methods[77].selector = @selector(resetWithId:withId:);
+  methods[78].selector = @selector(setDefaultColorWithASBorderDecorator:);
+  methods[79].selector = @selector(drawPathWithId:withId:withId:);
+  methods[80].selector = @selector(setColorAndWidthWithId:withId:withId:withInt:);
+  methods[81].selector = @selector(nativeSetColorAndWidthWithId:withId:withId:withInt:);
+  methods[82].selector = @selector(setDottedEffectWithId:withId:withInt:withInt:);
+  methods[83].selector = @selector(setDashedEffectWithId:withId:withInt:withInt:);
+  methods[84].selector = @selector(nativeInvalidateWithId:);
+  methods[85].selector = @selector(createMaskLayerWithId:withBoolean:);
+  methods[86].selector = @selector(setCornerRadiusOnSuperViewWithFloat:);
+  methods[87].selector = @selector(setCornerRadiusOnViewWithFloat:);
+  methods[88].selector = @selector(setFrameWithId:);
+  methods[89].selector = @selector(quadToWithId:withFloat:withFloat:withFloat:withFloat:);
+  methods[90].selector = @selector(moveToWithId:withFloat:withFloat:);
+  methods[91].selector = @selector(lineToWithId:withFloat:withFloat:);
+  methods[92].selector = @selector(arcToWithId:withASBorderDecorator_Arc:);
+  methods[93].selector = @selector(closePathWithId:);
+  methods[94].selector = @selector(addCommandIfNeeded);
+  methods[95].selector = @selector(adjustOffsetWithNSString:withFloat:);
+  methods[96].selector = @selector(drawableStateChanged);
+  methods[97].selector = @selector(isBorderStatefulWithASBorder:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "borderTop_", "LASBorder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
@@ -1524,7 +1530,7 @@ withASBorderDecorator_Arc:(ASBorderDecorator_Arc *)arc {
     { "isWrappedWidget_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "newInstance", "LASIWidget;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;", "getAttribute", "LASWidgetAttribute;", "()Ljava/util/List<Ljava/lang/String;>;", "createBorderStyle", "LNSString;", "createBorderDashSpacing", "I", "createBorderDashWidth", "createBorderColor", "LNSObject;", "createBorderWidth", "createBorderRadius", "F", "createBorderColorBottom", "createBorderColorTop", "createBorderColorLeft", "createBorderColorLeftInternal", "createBorderColorRight", "createBorderColorRightInternal", "createBorderWidthRight", "createBorderWidthRightInternal", "createBorderWidthTop", "createBorderWidthBottom", "createBorderWidthLeft", "createBorderWidthLeftInternal", "createBorderStyleTop", "createBorderDashSpacingTop", "createBorderDashWidthTop", "createBorderStyleBottom", "createBorderDashSpacingBottom", "createBorderDashWidthBottom", "createBorderStyleLeft", "createBorderStyleLeftInternal", "createBorderDashSpacingLeft", "createBorderDashSpacingLeftInternal", "createBorderDashWidthLeft", "createBorderDashWidthLeftInternal", "createBorderStyleRight", "createBorderStyleRightInternal", "createBorderDashSpacingRight", "createBorderDashSpacingRightInternal", "createBorderDashWidthRight", "createBorderDashWidthRightInternal", "createBorderRadiusTopLeft", "createBorderRadiusTopLeftInternal", "createBorderRadiusTopRight", "createBorderRadiusTopRightInternal", "createBorderRadiusBottomLeft", "createBorderRadiusBottomLeftInternal", "createBorderRadiusBottomRight", "createBorderRadiusBottomRightInternal", "createBorder", "FFFFLNSObject;LNSObject;LNSObject;LASBorder;LNSString;", "createArc", "FFFFLASBorder;LNSObject;LNSString;", "FFFFLASBorder;LNSObject;LNSString;Z", "hasRadius", "LASBorder;", "createBorderBottom", "LNSObject;LNSObject;LNSObject;III", "createBorderRight", "createBorderLeft", "createBorderTop", "getOffset", "LASBorder;LNSString;", "createArcFullPath", "LNSObject;LADView;", "execute", "LNSString;[LNSObject;", "setMaskLayer", "LNSObject;LNSObject;", "drawRect", "nativeCreateBorderLeft", "LASBorder;LNSObject;", "nativeCreateBorderRight", "nativeCreateBorderTop", "nativeCreateBorderBottom", "reset", "setDefaultColor", "LASBorderDecorator;", "drawPath", "LNSObject;LNSObject;LNSObject;", "setColorAndWidth", "LNSObject;LNSObject;LNSObject;I", "nativeSetColorAndWidth", "setDottedEffect", "LNSObject;LNSObject;II", "setDashedEffect", "nativeInvalidate", "createMaskLayer", "LNSObject;Z", "setCornerRadiusOnSuperView", "setCornerRadiusOnView", "setFrame", "quadTo", "LNSObject;FFFF", "moveTo", "LNSObject;FF", "lineTo", "arcTo", "LNSObject;LASBorderDecorator_Arc;", "closePath", "adjustOffset", "LNSString;F", "isBorderStateful", &ASBorderDecorator_METHODS, "Ljava/util/List<Ljava/lang/String;>;", "LASBorderDecorator_Arc;" };
-  static const J2ObjcClassInfo _ASBorderDecorator = { "BorderDecorator", "com.ashera.layout.decorator", ptrTable, methods, fields, 7, 0x1, 97, 13, -1, 111, -1, -1, -1 };
+  static const J2ObjcClassInfo _ASBorderDecorator = { "BorderDecorator", "com.ashera.layout.decorator", ptrTable, methods, fields, 7, 0x1, 98, 13, -1, 111, -1, -1, -1 };
   return &_ASBorderDecorator;
 }
 

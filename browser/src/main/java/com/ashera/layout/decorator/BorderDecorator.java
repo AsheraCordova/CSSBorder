@@ -35,6 +35,11 @@ public class BorderDecorator implements ILifeCycleDecorator {
 	public BorderDecorator() {
 	}
 	
+	@Override
+	public IWidget getWidget() {
+		return widget;
+	}
+	
 	private void setBorderProperty(String property, String value) {
 		Object webUseBoxShadowForBorder = widget.getFromTempCache("webUseBoxShadowForBorder");
 		

@@ -118,6 +118,8 @@
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
 - (void)nativeCreateBorderBottomWithASBorder:(ASBorder *)borderBottom
