@@ -86,6 +86,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (instancetype)initWithASBorderViewImpl:(ASBorderViewImpl *)outer$;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASBorderViewImpl_BorderViewCommandBuilder *)endAnimator;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
 - (id)getBorderBottomColor;
@@ -230,6 +234,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setErrorStyleWithNSString:(NSString *)arg0;
@@ -338,6 +344,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setOnClickWithNSString:(NSString *)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setOnDragWithNSString:(NSString *)arg0;
@@ -401,6 +415,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASBorderViewImpl_BorderViewCommandBuilder *)startAnimator;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetAlpha;
 
