@@ -224,6 +224,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setBorderWidthWithNSString:(NSString *)value;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setClickableWithBoolean:(jboolean)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setContentDescriptionWithNSString:(NSString *)arg0;
@@ -322,6 +324,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setLayoutDirectionWithNSString:(NSString *)arg0;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setMaxHeightWithNSString:(NSString *)arg0;
@@ -366,6 +370,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -383,6 +389,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASBorderViewImpl_BorderViewCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -474,6 +482,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetBorderTopWidth;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetBottom;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetClickable;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetContentDescription;
@@ -554,6 +564,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetLayoutDirection;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetLeft;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetLongClickable;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetMaxHeight;
@@ -572,6 +584,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetModelUiToPojo;
 
+- (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetRight;
+
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetRotation;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetRotationX;
@@ -587,6 +601,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetTextAlignment;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetTextDirection;
+
+- (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetTop;
 
 - (ASBorderViewImpl_BorderViewCommandBuilder *)tryGetTransformPivotX;
 
