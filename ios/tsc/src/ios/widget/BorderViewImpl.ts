@@ -13,6 +13,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -52,98 +53,98 @@ export abstract class BorderViewImpl<T> extends ViewImpl<T>{
 	//start - body
 	static initialize() {
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderWidth" }))
 	borderWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderColor" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderColor" }))
 	borderColor!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderStyle" }))
 	borderStyle!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderDashWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderDashWidth" }))
 	borderDashWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderDashSpacing" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderDashSpacing" }))
 	borderDashSpacing!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderRadius" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderRadius" }))
 	borderRadius!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderTopWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderTopWidth" }))
 	borderTopWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderTopColor" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderTopColor" }))
 	borderTopColor!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderTopStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderTopStyle" }))
 	borderTopStyle!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderTopDashWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderTopDashWidth" }))
 	borderTopDashWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderTopDashSpacing" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderTopDashSpacing" }))
 	borderTopDashSpacing!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderTopLeftRadius" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderTopLeftRadius" }))
 	borderTopLeftRadius!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderTopRightRadius" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderTopRightRadius" }))
 	borderTopRightRadius!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderBottomWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderBottomWidth" }))
 	borderBottomWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderBottomColor" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderBottomColor" }))
 	borderBottomColor!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderBottomStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderBottomStyle" }))
 	borderBottomStyle!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderBottomDashWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderBottomDashWidth" }))
 	borderBottomDashWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderBottomDashSpacing" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderBottomDashSpacing" }))
 	borderBottomDashSpacing!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderBottomLeftRadius" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderBottomLeftRadius" }))
 	borderBottomLeftRadius!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderBottomRightRadius" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderBottomRightRadius" }))
 	borderBottomRightRadius!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderLeftWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderLeftWidth" }))
 	borderLeftWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderLeftColor" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderLeftColor" }))
 	borderLeftColor!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderLeftStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderLeftStyle" }))
 	borderLeftStyle!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderLeftDashWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderLeftDashWidth" }))
 	borderLeftDashWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderLeftDashSpacing" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderLeftDashSpacing" }))
 	borderLeftDashSpacing!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderRightWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderRightWidth" }))
 	borderRightWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderRightColor" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderRightColor" }))
 	borderRightColor!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderRightStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderRightStyle" }))
 	borderRightStyle!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderRightDashWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderRightDashWidth" }))
 	borderRightDashWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "borderRightDashSpacing" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "borderRightDashSpacing" }))
 	borderRightDashSpacing!:CommandAttr<string>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	
