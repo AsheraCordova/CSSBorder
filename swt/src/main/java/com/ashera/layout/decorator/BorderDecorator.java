@@ -1073,6 +1073,10 @@ public class BorderDecorator implements ILifeCycleDecorator {
 	    canvas.fillRectangle(0, 0, rect.width, rect.height);
 	    createMask(canvas);
 
+	    if (objValue != null && objValue instanceof r.android.content.res.ColorStateList) {
+	    	objValue = ((r.android.content.res.ColorStateList) objValue).getColorForState(((View) widget.asWidget()).getDrawableState(), 0);
+	    	objValue = ViewImpl.getColor(objValue);
+	    }
 	    if (objValue != null && objValue instanceof Color) {
 	        canvas.setBackground((Color) objValue);
 	        canvas.fillRectangle(0, 0, rect.width, rect.height);
