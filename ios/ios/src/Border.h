@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSCSSBorderPlugin\src\main\java\com\ashera\layout\decorator\Border.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Border")
@@ -16,47 +17,51 @@
 #if !defined (ASBorder_) && (INCLUDE_ALL_Border || defined(INCLUDE_ASBorder))
 #define ASBorder_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
+
 @interface ASBorder : NSObject
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (jfloat)getBottomLeftRadius;
+- (float)getBottomLeftRadius;
 
-- (jfloat)getBottomRightRadius;
+- (float)getBottomRightRadius;
 
 - (id)getColor;
 
-- (jint)getDashSpacing;
+- (int32_t)getDashSpacing;
 
-- (jint)getDashWidth;
+- (int32_t)getDashWidth;
 
 - (NSString *)getStyle;
 
-- (jfloat)getTopLeftRadius;
+- (float)getTopLeftRadius;
 
-- (jfloat)getTopRightRadius;
+- (float)getTopRightRadius;
 
-- (jint)getWidth;
+- (int32_t)getWidth;
 
-- (void)setBottomLeftRadiusWithFloat:(jfloat)bottomLeftRadius;
+- (void)setBottomLeftRadiusWithFloat:(float)bottomLeftRadius;
 
-- (void)setBottomRightRadiusWithFloat:(jfloat)bottomRightRadius;
+- (void)setBottomRightRadiusWithFloat:(float)bottomRightRadius;
 
 - (void)setColorWithId:(id)color;
 
-- (void)setDashSpacingWithInt:(jint)dashSpacing;
+- (void)setDashSpacingWithInt:(int32_t)dashSpacing;
 
-- (void)setDashWidthWithInt:(jint)dashWidth;
+- (void)setDashWidthWithInt:(int32_t)dashWidth;
 
 - (void)setStyleWithNSString:(NSString *)style;
 
-- (void)setTopLeftRadiusWithFloat:(jfloat)topLeftRadius;
+- (void)setTopLeftRadiusWithFloat:(float)topLeftRadius;
 
-- (void)setTopRightRadiusWithFloat:(jfloat)topRightRadius;
+- (void)setTopRightRadiusWithFloat:(float)topRightRadius;
 
-- (void)setWidthWithInt:(jint)width;
+- (void)setWidthWithInt:(int32_t)width;
 
 @end
 
@@ -71,6 +76,7 @@ FOUNDATION_EXPORT ASBorder *create_ASBorder_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ASBorder)
 
 @compatibility_alias ComAsheraLayoutDecoratorBorder ASBorder;
+
 
 #endif
 

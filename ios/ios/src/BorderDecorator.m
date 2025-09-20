@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSCSSBorderPlugin\src\main\java\com\ashera\layout\decorator\BorderDecorator.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Border.h"
 #include "BorderDecorator.h"
 #include "Color.h"
@@ -19,6 +24,7 @@
 #include "View.h"
 #include "ViewImpl.h"
 #include "WidgetAttribute.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/util/Arrays.h"
@@ -28,7 +34,12 @@
 #include "CGRectWrapper.h"
 #define degreesToRadians(x) ((x) * M_PI / 180.0)
 
-@protocol JavaUtilList;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASBorderDecorator () {
@@ -37,13 +48,13 @@
   ASBorder *borderLeft_;
   ASBorder *borderRight_;
   ASBorder *borderBottom_;
-  __unsafe_unretained id<ASIWidget> widget_;
-  jfloat borderTopLeftRadius_;
-  jfloat borderTopRightRadius_;
-  jfloat borderBottomRightRadius_;
-  jfloat borderBottomLeftRadius_;
-  __unsafe_unretained id view_;
-  jboolean isWrappedWidget_;
+  WEAK_ id<ASIWidget> widget_;
+  float borderTopLeftRadius_;
+  float borderTopRightRadius_;
+  float borderBottomRightRadius_;
+  float borderBottomLeftRadius_;
+  WEAK_ id view_;
+  bool isWrappedWidget_;
 }
 
 - (void)initBorderTop OBJC_METHOD_FAMILY_NONE;
@@ -58,90 +69,90 @@
 
 - (void)createBorderColorRightInternalWithId:(id)color;
 
-- (void)createBorderWidthRightInternalWithInt:(jint)borderWith;
+- (void)createBorderWidthRightInternalWithInt:(int32_t)borderWith;
 
-- (void)createBorderWidthLeftInternalWithInt:(jint)borderWith;
+- (void)createBorderWidthLeftInternalWithInt:(int32_t)borderWith;
 
 - (void)createBorderStyleLeftInternalWithNSString:(NSString *)style;
 
-- (void)createBorderDashSpacingLeftInternalWithInt:(jint)dashSpacing;
+- (void)createBorderDashSpacingLeftInternalWithInt:(int32_t)dashSpacing;
 
-- (void)createBorderDashWidthLeftInternalWithInt:(jint)dashWidth;
+- (void)createBorderDashWidthLeftInternalWithInt:(int32_t)dashWidth;
 
 - (void)createBorderStyleRightInternalWithNSString:(NSString *)style;
 
-- (void)createBorderDashSpacingRightInternalWithInt:(jint)dashSpacing;
+- (void)createBorderDashSpacingRightInternalWithInt:(int32_t)dashSpacing;
 
-- (void)createBorderDashWidthRightInternalWithInt:(jint)dashWidth;
+- (void)createBorderDashWidthRightInternalWithInt:(int32_t)dashWidth;
 
-- (void)createBorderRadiusTopLeftInternalWithFloat:(jfloat)radius;
+- (void)createBorderRadiusTopLeftInternalWithFloat:(float)radius;
 
-- (void)createBorderRadiusTopRightInternalWithFloat:(jfloat)radius;
+- (void)createBorderRadiusTopRightInternalWithFloat:(float)radius;
 
-- (void)createBorderRadiusBottomLeftInternalWithFloat:(jfloat)radius;
+- (void)createBorderRadiusBottomLeftInternalWithFloat:(float)radius;
 
-- (void)createBorderRadiusBottomRightInternalWithFloat:(jfloat)radius;
+- (void)createBorderRadiusBottomRightInternalWithFloat:(float)radius;
 
-- (void)createArcWithFloat:(jfloat)x1
-                 withFloat:(jfloat)y1
-                 withFloat:(jfloat)x2
-                 withFloat:(jfloat)y2
+- (void)createArcWithFloat:(float)x1
+                 withFloat:(float)y1
+                 withFloat:(float)x2
+                 withFloat:(float)y2
               withASBorder:(ASBorder *)border
                     withId:(id)path
               withNSString:(NSString *)where;
 
-- (void)createArcWithFloat:(jfloat)x1
-                 withFloat:(jfloat)y1
-                 withFloat:(jfloat)x2
-                 withFloat:(jfloat)y2
+- (void)createArcWithFloat:(float)x1
+                 withFloat:(float)y1
+                 withFloat:(float)x2
+                 withFloat:(float)y2
               withASBorder:(ASBorder *)border
                     withId:(id)path
               withNSString:(NSString *)where
-               withBoolean:(jboolean)partial;
+               withBoolean:(bool)partial;
 
-- (jboolean)hasRadiusWithASBorder:(ASBorder *)border;
+- (bool)hasRadiusWithASBorder:(ASBorder *)border;
 
-- (jboolean)isBorderNotPresent;
+- (bool)isBorderNotPresent;
 
 - (void)createBorderBottomWithId:(id)canvas
                           withId:(id)path
                           withId:(id)paint
-                         withInt:(jint)width
-                         withInt:(jint)height
-                         withInt:(jint)topOffset;
+                         withInt:(int32_t)width
+                         withInt:(int32_t)height
+                         withInt:(int32_t)topOffset;
 
 - (void)createBorderRightWithId:(id)canvas
                          withId:(id)path
                          withId:(id)paint
-                        withInt:(jint)width
-                        withInt:(jint)height
-                        withInt:(jint)topOffset;
+                        withInt:(int32_t)width
+                        withInt:(int32_t)height
+                        withInt:(int32_t)topOffset;
 
 - (void)createBorderLeftWithId:(id)canvas
                         withId:(id)path
                         withId:(id)paint
-                       withInt:(jint)width
-                       withInt:(jint)height
-                       withInt:(jint)topOffset;
+                       withInt:(int32_t)width
+                       withInt:(int32_t)height
+                       withInt:(int32_t)topOffset;
 
 - (void)createBorderTopWithId:(id)canvas
                        withId:(id)path
                        withId:(id)paint
-                      withInt:(jint)width
-                      withInt:(jint)height
-                      withInt:(jint)topOffset;
+                      withInt:(int32_t)width
+                      withInt:(int32_t)height
+                      withInt:(int32_t)topOffset;
 
-- (jfloat)getOffsetWithASBorder:(ASBorder *)border
-                   withNSString:(NSString *)where;
+- (float)getOffsetWithASBorder:(ASBorder *)border
+                  withNSString:(NSString *)where;
 
-- (jboolean)useCornerRadius;
+- (bool)useCornerRadius;
 
 - (void)createArcFullPathWithId:(id)path
                      withADView:(ADView *)view;
 
-- (jboolean)invalidate;
+- (bool)invalidate;
 
-- (jboolean)isNoClip;
+- (bool)isNoClip;
 
 - (void)setMaskLayerWithId:(id)cgRect
                     withId:(id)mypath;
@@ -158,47 +169,47 @@
 - (void)setColorAndWidthWithId:(id)mypath
                         withId:(id)paint
                         withId:(id)borderColor
-                       withInt:(jint)width;
+                       withInt:(int32_t)width;
 
 - (void)nativeSetColorAndWidthWithId:(id)mypath
                               withId:(id)paint
                               withId:(id)borderColor
-                             withInt:(jint)width;
+                             withInt:(int32_t)width;
 
 - (void)setDottedEffectWithId:(id)mypath
                        withId:(id)paint
-                      withInt:(jint)radius
-                      withInt:(jint)defaultDashSpacing;
+                      withInt:(int32_t)radius
+                      withInt:(int32_t)defaultDashSpacing;
 
 - (void)setDashedEffectWithId:(id)mypath
                        withId:(id)paint
-                      withInt:(jint)dashWidth
-                      withInt:(jint)dashSpacing;
+                      withInt:(int32_t)dashWidth
+                      withInt:(int32_t)dashSpacing;
 
 - (void)nativeInvalidateWithId:(id)view;
 
 - (void)createMaskLayerWithId:(id)mypath
-                  withBoolean:(jboolean)isWrappedWidget;
+                  withBoolean:(bool)isWrappedWidget;
 
-- (void)setCornerRadiusOnSuperViewWithFloat:(jfloat)topLeftRadius;
+- (void)setCornerRadiusOnSuperViewWithFloat:(float)topLeftRadius;
 
-- (void)setCornerRadiusOnViewWithFloat:(jfloat)topLeftRadius;
+- (void)setCornerRadiusOnViewWithFloat:(float)topLeftRadius;
 
 - (void)setFrameWithId:(id)object;
 
 - (void)quadToWithId:(id)mypath
-           withFloat:(jfloat)x1
-           withFloat:(jfloat)y1
-           withFloat:(jfloat)x2
-           withFloat:(jfloat)y2;
+           withFloat:(float)x1
+           withFloat:(float)y1
+           withFloat:(float)x2
+           withFloat:(float)y2;
 
 - (void)moveToWithId:(id)mypath
-           withFloat:(jfloat)x
-           withFloat:(jfloat)y;
+           withFloat:(float)x
+           withFloat:(float)y;
 
 - (void)lineToWithId:(id)mypath
-           withFloat:(jfloat)x
-           withFloat:(jfloat)y;
+           withFloat:(float)x
+           withFloat:(float)y;
 
 - (void)arcToWithId:(id)mypath
 withASBorderDecorator_Arc:(ASBorderDecorator_Arc *)arc;
@@ -207,10 +218,10 @@ withASBorderDecorator_Arc:(ASBorderDecorator_Arc *)arc;
 
 - (void)addCommandIfNeeded;
 
-- (jfloat)adjustOffsetWithNSString:(NSString *)where
-                         withFloat:(jfloat)offset;
+- (float)adjustOffsetWithNSString:(NSString *)where
+                        withFloat:(float)offset;
 
-- (jboolean)isBorderStatefulWithASBorder:(ASBorder *)border;
+- (bool)isBorderStatefulWithASBorder:(ASBorder *)border;
 
 @end
 
@@ -235,55 +246,55 @@ __attribute__((unused)) static void ASBorderDecorator_createBorderColorLeftInter
 
 __attribute__((unused)) static void ASBorderDecorator_createBorderColorRightInternalWithId_(ASBorderDecorator *self, id color);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderWidthRightInternalWithInt_(ASBorderDecorator *self, jint borderWith);
+__attribute__((unused)) static void ASBorderDecorator_createBorderWidthRightInternalWithInt_(ASBorderDecorator *self, int32_t borderWith);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderWidthLeftInternalWithInt_(ASBorderDecorator *self, jint borderWith);
+__attribute__((unused)) static void ASBorderDecorator_createBorderWidthLeftInternalWithInt_(ASBorderDecorator *self, int32_t borderWith);
 
 __attribute__((unused)) static void ASBorderDecorator_createBorderStyleLeftInternalWithNSString_(ASBorderDecorator *self, NSString *style);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderDashSpacingLeftInternalWithInt_(ASBorderDecorator *self, jint dashSpacing);
+__attribute__((unused)) static void ASBorderDecorator_createBorderDashSpacingLeftInternalWithInt_(ASBorderDecorator *self, int32_t dashSpacing);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderDashWidthLeftInternalWithInt_(ASBorderDecorator *self, jint dashWidth);
+__attribute__((unused)) static void ASBorderDecorator_createBorderDashWidthLeftInternalWithInt_(ASBorderDecorator *self, int32_t dashWidth);
 
 __attribute__((unused)) static void ASBorderDecorator_createBorderStyleRightInternalWithNSString_(ASBorderDecorator *self, NSString *style);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderDashSpacingRightInternalWithInt_(ASBorderDecorator *self, jint dashSpacing);
+__attribute__((unused)) static void ASBorderDecorator_createBorderDashSpacingRightInternalWithInt_(ASBorderDecorator *self, int32_t dashSpacing);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderDashWidthRightInternalWithInt_(ASBorderDecorator *self, jint dashWidth);
+__attribute__((unused)) static void ASBorderDecorator_createBorderDashWidthRightInternalWithInt_(ASBorderDecorator *self, int32_t dashWidth);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderRadiusTopLeftInternalWithFloat_(ASBorderDecorator *self, jfloat radius);
+__attribute__((unused)) static void ASBorderDecorator_createBorderRadiusTopLeftInternalWithFloat_(ASBorderDecorator *self, float radius);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderRadiusTopRightInternalWithFloat_(ASBorderDecorator *self, jfloat radius);
+__attribute__((unused)) static void ASBorderDecorator_createBorderRadiusTopRightInternalWithFloat_(ASBorderDecorator *self, float radius);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderRadiusBottomLeftInternalWithFloat_(ASBorderDecorator *self, jfloat radius);
+__attribute__((unused)) static void ASBorderDecorator_createBorderRadiusBottomLeftInternalWithFloat_(ASBorderDecorator *self, float radius);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderRadiusBottomRightInternalWithFloat_(ASBorderDecorator *self, jfloat radius);
+__attribute__((unused)) static void ASBorderDecorator_createBorderRadiusBottomRightInternalWithFloat_(ASBorderDecorator *self, float radius);
 
-__attribute__((unused)) static void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_(ASBorderDecorator *self, jfloat x1, jfloat y1, jfloat x2, jfloat y2, ASBorder *border, id path, NSString *where);
+__attribute__((unused)) static void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_(ASBorderDecorator *self, float x1, float y1, float x2, float y2, ASBorder *border, id path, NSString *where);
 
-__attribute__((unused)) static void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_withBoolean_(ASBorderDecorator *self, jfloat x1, jfloat y1, jfloat x2, jfloat y2, ASBorder *border, id path, NSString *where, jboolean partial);
+__attribute__((unused)) static void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_withBoolean_(ASBorderDecorator *self, float x1, float y1, float x2, float y2, ASBorder *border, id path, NSString *where, bool partial);
 
-__attribute__((unused)) static jboolean ASBorderDecorator_hasRadiusWithASBorder_(ASBorderDecorator *self, ASBorder *border);
+__attribute__((unused)) static bool ASBorderDecorator_hasRadiusWithASBorder_(ASBorderDecorator *self, ASBorder *border);
 
-__attribute__((unused)) static jboolean ASBorderDecorator_isBorderNotPresent(ASBorderDecorator *self);
+__attribute__((unused)) static bool ASBorderDecorator_isBorderNotPresent(ASBorderDecorator *self);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderBottomWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, jint width, jint height, jint topOffset);
+__attribute__((unused)) static void ASBorderDecorator_createBorderBottomWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, int32_t width, int32_t height, int32_t topOffset);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderRightWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, jint width, jint height, jint topOffset);
+__attribute__((unused)) static void ASBorderDecorator_createBorderRightWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, int32_t width, int32_t height, int32_t topOffset);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderLeftWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, jint width, jint height, jint topOffset);
+__attribute__((unused)) static void ASBorderDecorator_createBorderLeftWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, int32_t width, int32_t height, int32_t topOffset);
 
-__attribute__((unused)) static void ASBorderDecorator_createBorderTopWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, jint width, jint height, jint topOffset);
+__attribute__((unused)) static void ASBorderDecorator_createBorderTopWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, int32_t width, int32_t height, int32_t topOffset);
 
-__attribute__((unused)) static jfloat ASBorderDecorator_getOffsetWithASBorder_withNSString_(ASBorderDecorator *self, ASBorder *border, NSString *where);
+__attribute__((unused)) static float ASBorderDecorator_getOffsetWithASBorder_withNSString_(ASBorderDecorator *self, ASBorder *border, NSString *where);
 
-__attribute__((unused)) static jboolean ASBorderDecorator_useCornerRadius(ASBorderDecorator *self);
+__attribute__((unused)) static bool ASBorderDecorator_useCornerRadius(ASBorderDecorator *self);
 
 __attribute__((unused)) static void ASBorderDecorator_createArcFullPathWithId_withADView_(ASBorderDecorator *self, id path, ADView *view);
 
-__attribute__((unused)) static jboolean ASBorderDecorator_invalidate(ASBorderDecorator *self);
+__attribute__((unused)) static bool ASBorderDecorator_invalidate(ASBorderDecorator *self);
 
-__attribute__((unused)) static jboolean ASBorderDecorator_isNoClip(ASBorderDecorator *self);
+__attribute__((unused)) static bool ASBorderDecorator_isNoClip(ASBorderDecorator *self);
 
 __attribute__((unused)) static void ASBorderDecorator_setMaskLayerWithId_withId_(ASBorderDecorator *self, id cgRect, id mypath);
 
@@ -293,29 +304,29 @@ __attribute__((unused)) static void ASBorderDecorator_setDefaultColorWithASBorde
 
 __attribute__((unused)) static void ASBorderDecorator_drawPathWithId_withId_withId_(ASBorderDecorator *self, id canvas, id mypath, id paint);
 
-__attribute__((unused)) static void ASBorderDecorator_setColorAndWidthWithId_withId_withId_withInt_(ASBorderDecorator *self, id mypath, id paint, id borderColor, jint width);
+__attribute__((unused)) static void ASBorderDecorator_setColorAndWidthWithId_withId_withId_withInt_(ASBorderDecorator *self, id mypath, id paint, id borderColor, int32_t width);
 
-__attribute__((unused)) static void ASBorderDecorator_nativeSetColorAndWidthWithId_withId_withId_withInt_(ASBorderDecorator *self, id mypath, id paint, id borderColor, jint width);
+__attribute__((unused)) static void ASBorderDecorator_nativeSetColorAndWidthWithId_withId_withId_withInt_(ASBorderDecorator *self, id mypath, id paint, id borderColor, int32_t width);
 
-__attribute__((unused)) static void ASBorderDecorator_setDottedEffectWithId_withId_withInt_withInt_(ASBorderDecorator *self, id mypath, id paint, jint radius, jint defaultDashSpacing);
+__attribute__((unused)) static void ASBorderDecorator_setDottedEffectWithId_withId_withInt_withInt_(ASBorderDecorator *self, id mypath, id paint, int32_t radius, int32_t defaultDashSpacing);
 
-__attribute__((unused)) static void ASBorderDecorator_setDashedEffectWithId_withId_withInt_withInt_(ASBorderDecorator *self, id mypath, id paint, jint dashWidth, jint dashSpacing);
+__attribute__((unused)) static void ASBorderDecorator_setDashedEffectWithId_withId_withInt_withInt_(ASBorderDecorator *self, id mypath, id paint, int32_t dashWidth, int32_t dashSpacing);
 
 __attribute__((unused)) static void ASBorderDecorator_nativeInvalidateWithId_(ASBorderDecorator *self, id view);
 
-__attribute__((unused)) static void ASBorderDecorator_createMaskLayerWithId_withBoolean_(ASBorderDecorator *self, id mypath, jboolean isWrappedWidget);
+__attribute__((unused)) static void ASBorderDecorator_createMaskLayerWithId_withBoolean_(ASBorderDecorator *self, id mypath, bool isWrappedWidget);
 
-__attribute__((unused)) static void ASBorderDecorator_setCornerRadiusOnSuperViewWithFloat_(ASBorderDecorator *self, jfloat topLeftRadius);
+__attribute__((unused)) static void ASBorderDecorator_setCornerRadiusOnSuperViewWithFloat_(ASBorderDecorator *self, float topLeftRadius);
 
-__attribute__((unused)) static void ASBorderDecorator_setCornerRadiusOnViewWithFloat_(ASBorderDecorator *self, jfloat topLeftRadius);
+__attribute__((unused)) static void ASBorderDecorator_setCornerRadiusOnViewWithFloat_(ASBorderDecorator *self, float topLeftRadius);
 
 __attribute__((unused)) static void ASBorderDecorator_setFrameWithId_(ASBorderDecorator *self, id object);
 
-__attribute__((unused)) static void ASBorderDecorator_quadToWithId_withFloat_withFloat_withFloat_withFloat_(ASBorderDecorator *self, id mypath, jfloat x1, jfloat y1, jfloat x2, jfloat y2);
+__attribute__((unused)) static void ASBorderDecorator_quadToWithId_withFloat_withFloat_withFloat_withFloat_(ASBorderDecorator *self, id mypath, float x1, float y1, float x2, float y2);
 
-__attribute__((unused)) static void ASBorderDecorator_moveToWithId_withFloat_withFloat_(ASBorderDecorator *self, id mypath, jfloat x, jfloat y);
+__attribute__((unused)) static void ASBorderDecorator_moveToWithId_withFloat_withFloat_(ASBorderDecorator *self, id mypath, float x, float y);
 
-__attribute__((unused)) static void ASBorderDecorator_lineToWithId_withFloat_withFloat_(ASBorderDecorator *self, id mypath, jfloat x, jfloat y);
+__attribute__((unused)) static void ASBorderDecorator_lineToWithId_withFloat_withFloat_(ASBorderDecorator *self, id mypath, float x, float y);
 
 __attribute__((unused)) static void ASBorderDecorator_arcToWithId_withASBorderDecorator_Arc_(ASBorderDecorator *self, id mypath, ASBorderDecorator_Arc *arc);
 
@@ -323,9 +334,9 @@ __attribute__((unused)) static void ASBorderDecorator_closePathWithId_(ASBorderD
 
 __attribute__((unused)) static void ASBorderDecorator_addCommandIfNeeded(ASBorderDecorator *self);
 
-__attribute__((unused)) static jfloat ASBorderDecorator_adjustOffsetWithNSString_withFloat_(ASBorderDecorator *self, NSString *where, jfloat offset);
+__attribute__((unused)) static float ASBorderDecorator_adjustOffsetWithNSString_withFloat_(ASBorderDecorator *self, NSString *where, float offset);
 
-__attribute__((unused)) static jboolean ASBorderDecorator_isBorderStatefulWithASBorder_(ASBorderDecorator *self, ASBorder *border);
+__attribute__((unused)) static bool ASBorderDecorator_isBorderStatefulWithASBorder_(ASBorderDecorator *self, ASBorder *border);
 
 J2OBJC_INITIALIZED_DEFN(ASBorderDecorator)
 
@@ -710,14 +721,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self createBorderStyleRightWithNSString:style];
 }
 
-- (void)createBorderDashSpacingWithInt:(jint)dashSpacing {
+- (void)createBorderDashSpacingWithInt:(int32_t)dashSpacing {
   [self createBorderDashSpacingTopWithInt:dashSpacing];
   [self createBorderDashSpacingBottomWithInt:dashSpacing];
   [self createBorderDashSpacingLeftWithInt:dashSpacing];
   [self createBorderDashSpacingRightWithInt:dashSpacing];
 }
 
-- (void)createBorderDashWidthWithInt:(jint)dashWidth {
+- (void)createBorderDashWidthWithInt:(int32_t)dashWidth {
   [self createBorderDashWidthTopWithInt:dashWidth];
   [self createBorderDashWidthBottomWithInt:dashWidth];
   [self createBorderDashWidthLeftWithInt:dashWidth];
@@ -731,14 +742,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self createBorderColorRightWithId:color];
 }
 
-- (void)createBorderWidthWithInt:(jint)borderWith {
+- (void)createBorderWidthWithInt:(int32_t)borderWith {
   [self createBorderWidthTopWithInt:borderWith];
   [self createBorderWidthBottomWithInt:borderWith];
   [self createBorderWidthLeftWithInt:borderWith];
   [self createBorderWidthRightWithInt:borderWith];
 }
 
-- (void)createBorderRadiusWithFloat:(jfloat)radius {
+- (void)createBorderRadiusWithFloat:(float)radius {
   [self createBorderRadiusTopLeftWithFloat:radius];
   [self createBorderRadiusBottomLeftWithFloat:radius];
   [self createBorderRadiusTopRightWithFloat:radius];
@@ -783,7 +794,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASBorderDecorator_createBorderColorRightInternalWithId_(self, color);
 }
 
-- (void)createBorderWidthRightWithInt:(jint)borderWith {
+- (void)createBorderWidthRightWithInt:(int32_t)borderWith {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderWidthLeftInternalWithInt_(self, borderWith);
   }
@@ -792,23 +803,23 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderWidthRightInternalWithInt:(jint)borderWith {
+- (void)createBorderWidthRightInternalWithInt:(int32_t)borderWith {
   ASBorderDecorator_createBorderWidthRightInternalWithInt_(self, borderWith);
 }
 
-- (void)createBorderWidthTopWithInt:(jint)borderWith {
+- (void)createBorderWidthTopWithInt:(int32_t)borderWith {
   ASBorderDecorator_initBorderTop(self);
   [((ASBorder *) nil_chk(borderTop_)) setWidthWithInt:borderWith];
   ASBorderDecorator_invalidate(self);
 }
 
-- (void)createBorderWidthBottomWithInt:(jint)borderWith {
+- (void)createBorderWidthBottomWithInt:(int32_t)borderWith {
   ASBorderDecorator_initBorderBottom(self);
   [((ASBorder *) nil_chk(borderBottom_)) setWidthWithInt:borderWith];
   ASBorderDecorator_invalidate(self);
 }
 
-- (void)createBorderWidthLeftWithInt:(jint)borderWith {
+- (void)createBorderWidthLeftWithInt:(int32_t)borderWith {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderWidthRightInternalWithInt_(self, borderWith);
   }
@@ -817,7 +828,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderWidthLeftInternalWithInt:(jint)borderWith {
+- (void)createBorderWidthLeftInternalWithInt:(int32_t)borderWith {
   ASBorderDecorator_createBorderWidthLeftInternalWithInt_(self, borderWith);
 }
 
@@ -827,13 +838,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASBorderDecorator_invalidate(self);
 }
 
-- (void)createBorderDashSpacingTopWithInt:(jint)dashSpacing {
+- (void)createBorderDashSpacingTopWithInt:(int32_t)dashSpacing {
   ASBorderDecorator_initBorderTop(self);
   [((ASBorder *) nil_chk(borderTop_)) setDashSpacingWithInt:dashSpacing];
   ASBorderDecorator_invalidate(self);
 }
 
-- (void)createBorderDashWidthTopWithInt:(jint)dashWidth {
+- (void)createBorderDashWidthTopWithInt:(int32_t)dashWidth {
   ASBorderDecorator_initBorderTop(self);
   [((ASBorder *) nil_chk(borderTop_)) setDashWidthWithInt:dashWidth];
   ASBorderDecorator_invalidate(self);
@@ -845,13 +856,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASBorderDecorator_invalidate(self);
 }
 
-- (void)createBorderDashSpacingBottomWithInt:(jint)dashSpacing {
+- (void)createBorderDashSpacingBottomWithInt:(int32_t)dashSpacing {
   ASBorderDecorator_initBorderBottom(self);
   [((ASBorder *) nil_chk(borderBottom_)) setDashSpacingWithInt:dashSpacing];
   ASBorderDecorator_invalidate(self);
 }
 
-- (void)createBorderDashWidthBottomWithInt:(jint)dashWidth {
+- (void)createBorderDashWidthBottomWithInt:(int32_t)dashWidth {
   ASBorderDecorator_initBorderBottom(self);
   [((ASBorder *) nil_chk(borderBottom_)) setDashWidthWithInt:dashWidth];
   ASBorderDecorator_invalidate(self);
@@ -870,7 +881,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASBorderDecorator_createBorderStyleLeftInternalWithNSString_(self, style);
 }
 
-- (void)createBorderDashSpacingLeftWithInt:(jint)dashSpacing {
+- (void)createBorderDashSpacingLeftWithInt:(int32_t)dashSpacing {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderDashSpacingRightInternalWithInt_(self, dashSpacing);
   }
@@ -879,11 +890,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderDashSpacingLeftInternalWithInt:(jint)dashSpacing {
+- (void)createBorderDashSpacingLeftInternalWithInt:(int32_t)dashSpacing {
   ASBorderDecorator_createBorderDashSpacingLeftInternalWithInt_(self, dashSpacing);
 }
 
-- (void)createBorderDashWidthLeftWithInt:(jint)dashWidth {
+- (void)createBorderDashWidthLeftWithInt:(int32_t)dashWidth {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderDashWidthRightInternalWithInt_(self, dashWidth);
   }
@@ -892,7 +903,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderDashWidthLeftInternalWithInt:(jint)dashWidth {
+- (void)createBorderDashWidthLeftInternalWithInt:(int32_t)dashWidth {
   ASBorderDecorator_createBorderDashWidthLeftInternalWithInt_(self, dashWidth);
 }
 
@@ -909,7 +920,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASBorderDecorator_createBorderStyleRightInternalWithNSString_(self, style);
 }
 
-- (void)createBorderDashSpacingRightWithInt:(jint)dashSpacing {
+- (void)createBorderDashSpacingRightWithInt:(int32_t)dashSpacing {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderDashSpacingLeftInternalWithInt_(self, dashSpacing);
   }
@@ -918,11 +929,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderDashSpacingRightInternalWithInt:(jint)dashSpacing {
+- (void)createBorderDashSpacingRightInternalWithInt:(int32_t)dashSpacing {
   ASBorderDecorator_createBorderDashSpacingRightInternalWithInt_(self, dashSpacing);
 }
 
-- (void)createBorderDashWidthRightWithInt:(jint)dashWidth {
+- (void)createBorderDashWidthRightWithInt:(int32_t)dashWidth {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderDashWidthLeftInternalWithInt_(self, dashWidth);
   }
@@ -931,11 +942,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderDashWidthRightInternalWithInt:(jint)dashWidth {
+- (void)createBorderDashWidthRightInternalWithInt:(int32_t)dashWidth {
   ASBorderDecorator_createBorderDashWidthRightInternalWithInt_(self, dashWidth);
 }
 
-- (void)createBorderRadiusTopLeftWithFloat:(jfloat)radius {
+- (void)createBorderRadiusTopLeftWithFloat:(float)radius {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderRadiusTopRightInternalWithFloat_(self, radius);
   }
@@ -944,11 +955,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderRadiusTopLeftInternalWithFloat:(jfloat)radius {
+- (void)createBorderRadiusTopLeftInternalWithFloat:(float)radius {
   ASBorderDecorator_createBorderRadiusTopLeftInternalWithFloat_(self, radius);
 }
 
-- (void)createBorderRadiusTopRightWithFloat:(jfloat)radius {
+- (void)createBorderRadiusTopRightWithFloat:(float)radius {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderRadiusTopLeftInternalWithFloat_(self, radius);
   }
@@ -957,11 +968,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderRadiusTopRightInternalWithFloat:(jfloat)radius {
+- (void)createBorderRadiusTopRightInternalWithFloat:(float)radius {
   ASBorderDecorator_createBorderRadiusTopRightInternalWithFloat_(self, radius);
 }
 
-- (void)createBorderRadiusBottomLeftWithFloat:(jfloat)radius {
+- (void)createBorderRadiusBottomLeftWithFloat:(float)radius {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderRadiusBottomRightInternalWithFloat_(self, radius);
   }
@@ -970,11 +981,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderRadiusBottomLeftInternalWithFloat:(jfloat)radius {
+- (void)createBorderRadiusBottomLeftInternalWithFloat:(float)radius {
   ASBorderDecorator_createBorderRadiusBottomLeftInternalWithFloat_(self, radius);
 }
 
-- (void)createBorderRadiusBottomRightWithFloat:(jfloat)radius {
+- (void)createBorderRadiusBottomRightWithFloat:(float)radius {
   if (ASViewImpl_isRTLLayoutWithASIWidget_(widget_)) {
     ASBorderDecorator_createBorderRadiusBottomLeftInternalWithFloat_(self, radius);
   }
@@ -983,14 +994,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)createBorderRadiusBottomRightInternalWithFloat:(jfloat)radius {
+- (void)createBorderRadiusBottomRightInternalWithFloat:(float)radius {
   ASBorderDecorator_createBorderRadiusBottomRightInternalWithFloat_(self, radius);
 }
 
-- (void)createBorderWithFloat:(jfloat)x1
-                    withFloat:(jfloat)y1
-                    withFloat:(jfloat)x2
-                    withFloat:(jfloat)y2
+- (void)createBorderWithFloat:(float)x1
+                    withFloat:(float)y1
+                    withFloat:(float)x2
+                    withFloat:(float)y2
                        withId:(id)canvas
                        withId:(id)path
                        withId:(id)paint
@@ -1001,30 +1012,30 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (borderColor == nil) {
     borderColor = defaultColor_;
   }
-  jint width = [border getWidth];
+  int32_t width = [border getWidth];
   ASBorderDecorator_setColorAndWidthWithId_withId_withId_withInt_(self, path, paint, borderColor, width);
   switch (JreIndexOfStr([border getStyle], (id[]){ @"dashed", @"dotted" }, 2)) {
     case 0:
     {
-      jint defaultDashSpacing = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"1dp"));
-      jint defaultDashWidth = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"3dp"));
-      jint dashWidth = [border getDashWidth] == -1 ? defaultDashWidth : [border getDashWidth];
-      jint dashSpacing = [border getDashSpacing] == -1 ? defaultDashSpacing : [border getDashSpacing];
+      int32_t defaultDashSpacing = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"1dp"));
+      int32_t defaultDashWidth = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"3dp"));
+      int32_t dashWidth = [border getDashWidth] == -1 ? defaultDashWidth : [border getDashWidth];
+      int32_t dashSpacing = [border getDashSpacing] == -1 ? defaultDashSpacing : [border getDashSpacing];
       ASBorderDecorator_setDashedEffectWithId_withId_withInt_withInt_(self, path, paint, dashWidth, dashSpacing);
       break;
     }
     case 1:
     {
-      jint radius = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"1dp"));
-      jint defaultDashSpacing = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"1dp"));
-      jint dashSpacing = [border getDashSpacing] == -1 ? defaultDashSpacing : [border getDashSpacing];
+      int32_t radius = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"1dp"));
+      int32_t defaultDashSpacing = JreFpToInt(ASPluginInvoker_convertDpToPixelWithNSString_(@"1dp"));
+      int32_t dashSpacing = [border getDashSpacing] == -1 ? defaultDashSpacing : [border getDashSpacing];
       ASBorderDecorator_setDottedEffectWithId_withId_withInt_withInt_(self, path, paint, radius, dashSpacing);
       break;
     }
     default:
     break;
   }
-  jboolean hasRadius = ASBorderDecorator_hasRadiusWithASBorder_(self, border);
+  bool hasRadius = ASBorderDecorator_hasRadiusWithASBorder_(self, border);
   if (hasRadius) {
     ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_(self, x1, y1, x2, y2, border, path, where);
   }
@@ -1035,77 +1046,77 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASBorderDecorator_drawPathWithId_withId_withId_(self, canvas, path, paint);
 }
 
-- (void)createArcWithFloat:(jfloat)x1
-                 withFloat:(jfloat)y1
-                 withFloat:(jfloat)x2
-                 withFloat:(jfloat)y2
+- (void)createArcWithFloat:(float)x1
+                 withFloat:(float)y1
+                 withFloat:(float)x2
+                 withFloat:(float)y2
               withASBorder:(ASBorder *)border
                     withId:(id)path
               withNSString:(NSString *)where {
   ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_(self, x1, y1, x2, y2, border, path, where);
 }
 
-- (void)createArcWithFloat:(jfloat)x1
-                 withFloat:(jfloat)y1
-                 withFloat:(jfloat)x2
-                 withFloat:(jfloat)y2
+- (void)createArcWithFloat:(float)x1
+                 withFloat:(float)y1
+                 withFloat:(float)x2
+                 withFloat:(float)y2
               withASBorder:(ASBorder *)border
                     withId:(id)path
               withNSString:(NSString *)where
-               withBoolean:(jboolean)partial {
+               withBoolean:(bool)partial {
   ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_withBoolean_(self, x1, y1, x2, y2, border, path, where, partial);
 }
 
-- (jboolean)hasRadiusWithASBorder:(ASBorder *)border {
+- (bool)hasRadiusWithASBorder:(ASBorder *)border {
   return ASBorderDecorator_hasRadiusWithASBorder_(self, border);
 }
 
-- (jboolean)isBorderNotPresent {
+- (bool)isBorderNotPresent {
   return ASBorderDecorator_isBorderNotPresent(self);
 }
 
 - (void)createBorderBottomWithId:(id)canvas
                           withId:(id)path
                           withId:(id)paint
-                         withInt:(jint)width
-                         withInt:(jint)height
-                         withInt:(jint)topOffset {
+                         withInt:(int32_t)width
+                         withInt:(int32_t)height
+                         withInt:(int32_t)topOffset {
   ASBorderDecorator_createBorderBottomWithId_withId_withId_withInt_withInt_withInt_(self, canvas, path, paint, width, height, topOffset);
 }
 
 - (void)createBorderRightWithId:(id)canvas
                          withId:(id)path
                          withId:(id)paint
-                        withInt:(jint)width
-                        withInt:(jint)height
-                        withInt:(jint)topOffset {
+                        withInt:(int32_t)width
+                        withInt:(int32_t)height
+                        withInt:(int32_t)topOffset {
   ASBorderDecorator_createBorderRightWithId_withId_withId_withInt_withInt_withInt_(self, canvas, path, paint, width, height, topOffset);
 }
 
 - (void)createBorderLeftWithId:(id)canvas
                         withId:(id)path
                         withId:(id)paint
-                       withInt:(jint)width
-                       withInt:(jint)height
-                       withInt:(jint)topOffset {
+                       withInt:(int32_t)width
+                       withInt:(int32_t)height
+                       withInt:(int32_t)topOffset {
   ASBorderDecorator_createBorderLeftWithId_withId_withId_withInt_withInt_withInt_(self, canvas, path, paint, width, height, topOffset);
 }
 
 - (void)createBorderTopWithId:(id)canvas
                        withId:(id)path
                        withId:(id)paint
-                      withInt:(jint)width
-                      withInt:(jint)height
-                      withInt:(jint)topOffset {
+                      withInt:(int32_t)width
+                      withInt:(int32_t)height
+                      withInt:(int32_t)topOffset {
   ASBorderDecorator_createBorderTopWithId_withId_withId_withInt_withInt_withInt_(self, canvas, path, paint, width, height, topOffset);
 }
 
-- (jfloat)getOffsetWithASBorder:(ASBorder *)border
-                   withNSString:(NSString *)where {
+- (float)getOffsetWithASBorder:(ASBorder *)border
+                  withNSString:(NSString *)where {
   return ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, border, where);
 }
 
-- (jboolean)useCornerRadius {
+- (bool)useCornerRadius {
   return ASBorderDecorator_useCornerRadius(self);
 }
 
@@ -1114,11 +1125,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASBorderDecorator_createArcFullPathWithId_withADView_(self, path, view);
 }
 
-- (jboolean)invalidate {
+- (bool)invalidate {
   return ASBorderDecorator_invalidate(self);
 }
 
-- (jboolean)isNoClip {
+- (bool)isNoClip {
   return ASBorderDecorator_isNoClip(self);
 }
 
@@ -1211,28 +1222,28 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)setColorAndWidthWithId:(id)mypath
                         withId:(id)paint
                         withId:(id)borderColor
-                       withInt:(jint)width {
+                       withInt:(int32_t)width {
   ASBorderDecorator_setColorAndWidthWithId_withId_withId_withInt_(self, mypath, paint, borderColor, width);
 }
 
 - (void)nativeSetColorAndWidthWithId:(id)mypath
                               withId:(id)paint
                               withId:(id)borderColor
-                             withInt:(jint)width {
+                             withInt:(int32_t)width {
   ASBorderDecorator_nativeSetColorAndWidthWithId_withId_withId_withInt_(self, mypath, paint, borderColor, width);
 }
 
 - (void)setDottedEffectWithId:(id)mypath
                        withId:(id)paint
-                      withInt:(jint)radius
-                      withInt:(jint)defaultDashSpacing {
+                      withInt:(int32_t)radius
+                      withInt:(int32_t)defaultDashSpacing {
   ASBorderDecorator_setDottedEffectWithId_withId_withInt_withInt_(self, mypath, paint, radius, defaultDashSpacing);
 }
 
 - (void)setDashedEffectWithId:(id)mypath
                        withId:(id)paint
-                      withInt:(jint)dashWidth
-                      withInt:(jint)dashSpacing {
+                      withInt:(int32_t)dashWidth
+                      withInt:(int32_t)dashSpacing {
   ASBorderDecorator_setDashedEffectWithId_withId_withInt_withInt_(self, mypath, paint, dashWidth, dashSpacing);
 }
 
@@ -1241,15 +1252,15 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)createMaskLayerWithId:(id)mypath
-                  withBoolean:(jboolean)isWrappedWidget {
+                  withBoolean:(bool)isWrappedWidget {
   ASBorderDecorator_createMaskLayerWithId_withBoolean_(self, mypath, isWrappedWidget);
 }
 
-- (void)setCornerRadiusOnSuperViewWithFloat:(jfloat)topLeftRadius {
+- (void)setCornerRadiusOnSuperViewWithFloat:(float)topLeftRadius {
   ASBorderDecorator_setCornerRadiusOnSuperViewWithFloat_(self, topLeftRadius);
 }
 
-- (void)setCornerRadiusOnViewWithFloat:(jfloat)topLeftRadius {
+- (void)setCornerRadiusOnViewWithFloat:(float)topLeftRadius {
   ASBorderDecorator_setCornerRadiusOnViewWithFloat_(self, topLeftRadius);
 }
 
@@ -1258,22 +1269,22 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)quadToWithId:(id)mypath
-           withFloat:(jfloat)x1
-           withFloat:(jfloat)y1
-           withFloat:(jfloat)x2
-           withFloat:(jfloat)y2 {
+           withFloat:(float)x1
+           withFloat:(float)y1
+           withFloat:(float)x2
+           withFloat:(float)y2 {
   ASBorderDecorator_quadToWithId_withFloat_withFloat_withFloat_withFloat_(self, mypath, x1, y1, x2, y2);
 }
 
 - (void)moveToWithId:(id)mypath
-           withFloat:(jfloat)x
-           withFloat:(jfloat)y {
+           withFloat:(float)x
+           withFloat:(float)y {
   ASBorderDecorator_moveToWithId_withFloat_withFloat_(self, mypath, x, y);
 }
 
 - (void)lineToWithId:(id)mypath
-           withFloat:(jfloat)x
-           withFloat:(jfloat)y {
+           withFloat:(float)x
+           withFloat:(float)y {
   ASBorderDecorator_lineToWithId_withFloat_withFloat_(self, mypath, x, y);
 }
 
@@ -1290,8 +1301,8 @@ withASBorderDecorator_Arc:(ASBorderDecorator_Arc *)arc {
   ASBorderDecorator_addCommandIfNeeded(self);
 }
 
-- (jfloat)adjustOffsetWithNSString:(NSString *)where
-                         withFloat:(jfloat)offset {
+- (float)adjustOffsetWithNSString:(NSString *)where
+                        withFloat:(float)offset {
   return ASBorderDecorator_adjustOffsetWithNSString_withFloat_(self, where, offset);
 }
 
@@ -1301,7 +1312,7 @@ withASBorderDecorator_Arc:(ASBorderDecorator_Arc *)arc {
   }
 }
 
-- (jboolean)isBorderStatefulWithASBorder:(ASBorder *)border {
+- (bool)isBorderStatefulWithASBorder:(ASBorder *)border {
   return ASBorderDecorator_isBorderStatefulWithASBorder_(self, border);
 }
 
@@ -1595,13 +1606,13 @@ void ASBorderDecorator_createBorderColorRightInternalWithId_(ASBorderDecorator *
   ASBorderDecorator_invalidate(self);
 }
 
-void ASBorderDecorator_createBorderWidthRightInternalWithInt_(ASBorderDecorator *self, jint borderWith) {
+void ASBorderDecorator_createBorderWidthRightInternalWithInt_(ASBorderDecorator *self, int32_t borderWith) {
   ASBorderDecorator_initBorderRight(self);
   [((ASBorder *) nil_chk(self->borderRight_)) setWidthWithInt:borderWith];
   ASBorderDecorator_invalidate(self);
 }
 
-void ASBorderDecorator_createBorderWidthLeftInternalWithInt_(ASBorderDecorator *self, jint borderWith) {
+void ASBorderDecorator_createBorderWidthLeftInternalWithInt_(ASBorderDecorator *self, int32_t borderWith) {
   ASBorderDecorator_initBorderLeft(self);
   [((ASBorder *) nil_chk(self->borderLeft_)) setWidthWithInt:borderWith];
   ASBorderDecorator_invalidate(self);
@@ -1613,13 +1624,13 @@ void ASBorderDecorator_createBorderStyleLeftInternalWithNSString_(ASBorderDecora
   ASBorderDecorator_invalidate(self);
 }
 
-void ASBorderDecorator_createBorderDashSpacingLeftInternalWithInt_(ASBorderDecorator *self, jint dashSpacing) {
+void ASBorderDecorator_createBorderDashSpacingLeftInternalWithInt_(ASBorderDecorator *self, int32_t dashSpacing) {
   ASBorderDecorator_initBorderLeft(self);
   [((ASBorder *) nil_chk(self->borderLeft_)) setDashSpacingWithInt:dashSpacing];
   ASBorderDecorator_invalidate(self);
 }
 
-void ASBorderDecorator_createBorderDashWidthLeftInternalWithInt_(ASBorderDecorator *self, jint dashWidth) {
+void ASBorderDecorator_createBorderDashWidthLeftInternalWithInt_(ASBorderDecorator *self, int32_t dashWidth) {
   ASBorderDecorator_initBorderLeft(self);
   [((ASBorder *) nil_chk(self->borderLeft_)) setDashWidthWithInt:dashWidth];
   ASBorderDecorator_invalidate(self);
@@ -1631,19 +1642,19 @@ void ASBorderDecorator_createBorderStyleRightInternalWithNSString_(ASBorderDecor
   ASBorderDecorator_invalidate(self);
 }
 
-void ASBorderDecorator_createBorderDashSpacingRightInternalWithInt_(ASBorderDecorator *self, jint dashSpacing) {
+void ASBorderDecorator_createBorderDashSpacingRightInternalWithInt_(ASBorderDecorator *self, int32_t dashSpacing) {
   ASBorderDecorator_initBorderRight(self);
   [((ASBorder *) nil_chk(self->borderRight_)) setDashSpacingWithInt:dashSpacing];
   ASBorderDecorator_invalidate(self);
 }
 
-void ASBorderDecorator_createBorderDashWidthRightInternalWithInt_(ASBorderDecorator *self, jint dashWidth) {
+void ASBorderDecorator_createBorderDashWidthRightInternalWithInt_(ASBorderDecorator *self, int32_t dashWidth) {
   ASBorderDecorator_initBorderRight(self);
   [((ASBorder *) nil_chk(self->borderRight_)) setDashWidthWithInt:dashWidth];
   ASBorderDecorator_invalidate(self);
 }
 
-void ASBorderDecorator_createBorderRadiusTopLeftInternalWithFloat_(ASBorderDecorator *self, jfloat radius) {
+void ASBorderDecorator_createBorderRadiusTopLeftInternalWithFloat_(ASBorderDecorator *self, float radius) {
   self->borderTopLeftRadius_ = radius;
   ASBorderDecorator_initBorderTop(self);
   ASBorderDecorator_initBorderLeft(self);
@@ -1654,7 +1665,7 @@ void ASBorderDecorator_createBorderRadiusTopLeftInternalWithFloat_(ASBorderDecor
   }
 }
 
-void ASBorderDecorator_createBorderRadiusTopRightInternalWithFloat_(ASBorderDecorator *self, jfloat radius) {
+void ASBorderDecorator_createBorderRadiusTopRightInternalWithFloat_(ASBorderDecorator *self, float radius) {
   self->borderTopRightRadius_ = radius;
   ASBorderDecorator_initBorderTop(self);
   ASBorderDecorator_initBorderRight(self);
@@ -1665,7 +1676,7 @@ void ASBorderDecorator_createBorderRadiusTopRightInternalWithFloat_(ASBorderDeco
   }
 }
 
-void ASBorderDecorator_createBorderRadiusBottomLeftInternalWithFloat_(ASBorderDecorator *self, jfloat radius) {
+void ASBorderDecorator_createBorderRadiusBottomLeftInternalWithFloat_(ASBorderDecorator *self, float radius) {
   self->borderBottomLeftRadius_ = radius;
   ASBorderDecorator_initBorderBottom(self);
   ASBorderDecorator_initBorderLeft(self);
@@ -1676,7 +1687,7 @@ void ASBorderDecorator_createBorderRadiusBottomLeftInternalWithFloat_(ASBorderDe
   }
 }
 
-void ASBorderDecorator_createBorderRadiusBottomRightInternalWithFloat_(ASBorderDecorator *self, jfloat radius) {
+void ASBorderDecorator_createBorderRadiusBottomRightInternalWithFloat_(ASBorderDecorator *self, float radius) {
   self->borderBottomRightRadius_ = radius;
   ASBorderDecorator_initBorderBottom(self);
   ASBorderDecorator_initBorderRight(self);
@@ -1687,19 +1698,19 @@ void ASBorderDecorator_createBorderRadiusBottomRightInternalWithFloat_(ASBorderD
   }
 }
 
-void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_(ASBorderDecorator *self, jfloat x1, jfloat y1, jfloat x2, jfloat y2, ASBorder *border, id path, NSString *where) {
+void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_(ASBorderDecorator *self, float x1, float y1, float x2, float y2, ASBorder *border, id path, NSString *where) {
   ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_withBoolean_(self, x1, y1, x2, y2, border, path, where, true);
 }
 
-void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_withBoolean_(ASBorderDecorator *self, jfloat x1, jfloat y1, jfloat x2, jfloat y2, ASBorder *border, id path, NSString *where, jboolean partial) {
+void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_withBoolean_(ASBorderDecorator *self, float x1, float y1, float x2, float y2, ASBorder *border, id path, NSString *where, bool partial) {
   if (border == nil) {
     border = new_ASBorder_init();
   }
   switch (JreIndexOfStr(where, (id[]){ @"left", @"bottom", @"right", @"top" }, 4)) {
     case 0:
     {
-      jfloat topleftRadius = [border getTopLeftRadius];
-      jfloat bottomleftRadius = [border getBottomLeftRadius];
+      float topleftRadius = [border getTopLeftRadius];
+      float bottomleftRadius = [border getBottomLeftRadius];
       if (partial) {
         ASBorderDecorator_moveToWithId_withFloat_withFloat_(self, path, x2, y2);
       }
@@ -1710,8 +1721,8 @@ void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBo
     }
     case 1:
     {
-      jfloat leftRadius = [border getBottomLeftRadius];
-      jfloat rightRadius = [border getBottomRightRadius];
+      float leftRadius = [border getBottomLeftRadius];
+      float rightRadius = [border getBottomRightRadius];
       if (partial) {
         ASBorderDecorator_moveToWithId_withFloat_withFloat_(self, path, x2, y2);
       }
@@ -1722,8 +1733,8 @@ void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBo
     }
     case 2:
     {
-      jfloat topRightRadius = [border getTopRightRadius];
-      jfloat bottomRightRadius = [border getBottomRightRadius];
+      float topRightRadius = [border getTopRightRadius];
+      float bottomRightRadius = [border getBottomRightRadius];
       if (partial) {
         ASBorderDecorator_moveToWithId_withFloat_withFloat_(self, path, x1, y1);
       }
@@ -1734,8 +1745,8 @@ void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBo
     }
     case 3:
     {
-      jfloat leftRadius = [border getTopLeftRadius];
-      jfloat rightRadius = [border getTopRightRadius];
+      float leftRadius = [border getTopLeftRadius];
+      float rightRadius = [border getTopRightRadius];
       if (partial) {
         ASBorderDecorator_moveToWithId_withFloat_withFloat_(self, path, x1, y1);
       }
@@ -1749,50 +1760,50 @@ void ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBo
   }
 }
 
-jboolean ASBorderDecorator_hasRadiusWithASBorder_(ASBorderDecorator *self, ASBorder *border) {
+bool ASBorderDecorator_hasRadiusWithASBorder_(ASBorderDecorator *self, ASBorder *border) {
   return [((ASBorder *) nil_chk(border)) getTopLeftRadius] > 0 || [border getTopRightRadius] > 0 || [border getBottomLeftRadius] > 0 || [border getBottomRightRadius] > 0;
 }
 
-jboolean ASBorderDecorator_isBorderNotPresent(ASBorderDecorator *self) {
+bool ASBorderDecorator_isBorderNotPresent(ASBorderDecorator *self) {
   return self->borderTop_ == nil && self->borderLeft_ == nil && self->borderRight_ == nil && self->borderBottom_ == nil;
 }
 
-void ASBorderDecorator_createBorderBottomWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, jint width, jint height, jint topOffset) {
+void ASBorderDecorator_createBorderBottomWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, int32_t width, int32_t height, int32_t topOffset) {
   if (self->borderBottom_ != nil && [self->borderBottom_ getWidth] > 0) {
-    jfloat offset = ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, self->borderBottom_, @"bottom");
+    float offset = ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, self->borderBottom_, @"bottom");
     [self createBorderWithFloat:0 withFloat:height - offset withFloat:width withFloat:height - offset withId:canvas withId:path withId:paint withASBorder:self->borderBottom_ withNSString:@"bottom"];
   }
 }
 
-void ASBorderDecorator_createBorderRightWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, jint width, jint height, jint topOffset) {
+void ASBorderDecorator_createBorderRightWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, int32_t width, int32_t height, int32_t topOffset) {
   if (self->borderRight_ != nil && [self->borderRight_ getWidth] > 0) {
-    jfloat offset = ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, self->borderRight_, @"right");
+    float offset = ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, self->borderRight_, @"right");
     [self createBorderWithFloat:width - offset withFloat:0 withFloat:width - offset withFloat:height withId:canvas withId:path withId:paint withASBorder:self->borderRight_ withNSString:@"right"];
   }
 }
 
-void ASBorderDecorator_createBorderLeftWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, jint width, jint height, jint topOffset) {
+void ASBorderDecorator_createBorderLeftWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, int32_t width, int32_t height, int32_t topOffset) {
   if (self->borderLeft_ != nil && [self->borderLeft_ getWidth] > 0) {
-    jfloat offset = ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, self->borderLeft_, @"left");
+    float offset = ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, self->borderLeft_, @"left");
     [self createBorderWithFloat:offset withFloat:0 withFloat:offset withFloat:height withId:canvas withId:path withId:paint withASBorder:self->borderLeft_ withNSString:@"left"];
   }
 }
 
-void ASBorderDecorator_createBorderTopWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, jint width, jint height, jint topOffset) {
+void ASBorderDecorator_createBorderTopWithId_withId_withId_withInt_withInt_withInt_(ASBorderDecorator *self, id canvas, id path, id paint, int32_t width, int32_t height, int32_t topOffset) {
   if (self->borderTop_ != nil && [self->borderTop_ getWidth] > 0) {
-    jfloat offset = ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, self->borderTop_, @"top");
+    float offset = ASBorderDecorator_getOffsetWithASBorder_withNSString_(self, self->borderTop_, @"top");
     [self createBorderWithFloat:0 withFloat:topOffset + offset withFloat:width withFloat:topOffset + offset withId:canvas withId:path withId:paint withASBorder:self->borderTop_ withNSString:@"top"];
   }
 }
 
-jfloat ASBorderDecorator_getOffsetWithASBorder_withNSString_(ASBorderDecorator *self, ASBorder *border, NSString *where) {
-  jfloat offset = (jfloat) [((ASBorder *) nil_chk(border)) getWidth] * 0.5f;
+float ASBorderDecorator_getOffsetWithASBorder_withNSString_(ASBorderDecorator *self, ASBorder *border, NSString *where) {
+  float offset = (float) [((ASBorder *) nil_chk(border)) getWidth] * 0.5f;
   offset = ASBorderDecorator_adjustOffsetWithNSString_withFloat_(self, where, offset);
   return offset;
 }
 
-jboolean ASBorderDecorator_useCornerRadius(ASBorderDecorator *self) {
-  jboolean useCornerRadius = self->borderTopLeftRadius_ == self->borderTopRightRadius_ && self->borderBottomRightRadius_ == self->borderBottomLeftRadius_ && self->borderTopLeftRadius_ == self->borderBottomLeftRadius_;
+bool ASBorderDecorator_useCornerRadius(ASBorderDecorator *self) {
+  bool useCornerRadius = self->borderTopLeftRadius_ == self->borderTopRightRadius_ && self->borderBottomRightRadius_ == self->borderBottomLeftRadius_ && self->borderTopLeftRadius_ == self->borderBottomLeftRadius_;
   return useCornerRadius;
 }
 
@@ -1803,8 +1814,8 @@ void ASBorderDecorator_createArcFullPathWithId_withADView_(ASBorderDecorator *se
   ASBorderDecorator_createArcWithFloat_withFloat_withFloat_withFloat_withASBorder_withId_withNSString_withBoolean_(self, 0, [view getHeight], [view getWidth], [view getHeight], self->borderBottom_, path, @"bottom", false);
 }
 
-jboolean ASBorderDecorator_invalidate(ASBorderDecorator *self) {
-  jboolean success = false;
+bool ASBorderDecorator_invalidate(ASBorderDecorator *self) {
+  bool success = false;
   if ([((id<ASIWidget>) nil_chk(self->widget_)) isInitialised]) {
     ASBorderDecorator_nativeInvalidateWithId_(self, [((id<ASIWidget>) nil_chk(self->widget_)) asNativeWidget]);
     success = true;
@@ -1812,15 +1823,15 @@ jboolean ASBorderDecorator_invalidate(ASBorderDecorator *self) {
   return success;
 }
 
-jboolean ASBorderDecorator_isNoClip(ASBorderDecorator *self) {
-  jboolean noClip = ((self->borderTopLeftRadius_ == self->borderTopRightRadius_ && self->borderBottomRightRadius_ == self->borderBottomLeftRadius_ && self->borderTopLeftRadius_ == self->borderBottomLeftRadius_) && self->borderTopLeftRadius_ == 0);
+bool ASBorderDecorator_isNoClip(ASBorderDecorator *self) {
+  bool noClip = ((self->borderTopLeftRadius_ == self->borderTopRightRadius_ && self->borderBottomRightRadius_ == self->borderBottomLeftRadius_ && self->borderTopLeftRadius_ == self->borderBottomLeftRadius_) && self->borderTopLeftRadius_ == 0);
   return noClip;
 }
 
 void ASBorderDecorator_setMaskLayerWithId_withId_(ASBorderDecorator *self, id cgRect, id mypath) {
   if (ASBorderDecorator_isBorderNotPresent(self)) return;
-  jboolean useCornerRadius = ASBorderDecorator_useCornerRadius(self);
-  jfloat topLeftRadius = 0;
+  bool useCornerRadius = ASBorderDecorator_useCornerRadius(self);
+  float topLeftRadius = 0;
   if (self->borderTop_ != nil) {
     topLeftRadius = [self->borderTop_ getTopLeftRadius];
   }
@@ -1851,7 +1862,7 @@ void ASBorderDecorator_drawPathWithId_withId_withId_(ASBorderDecorator *self, id
   [path stroke];
 }
 
-void ASBorderDecorator_setColorAndWidthWithId_withId_withId_withInt_(ASBorderDecorator *self, id mypath, id paint, id borderColor, jint width) {
+void ASBorderDecorator_setColorAndWidthWithId_withId_withId_withInt_(ASBorderDecorator *self, id mypath, id paint, id borderColor, int32_t width) {
   if ([borderColor isKindOfClass:[ADColorStateList class]]) {
     ADColorStateList *colorStateList = (ADColorStateList *) borderColor;
     ADView *view = (ADView *) cast_chk([((id<ASIWidget>) nil_chk(self->widget_)) asWidget], [ADView class]);
@@ -1860,19 +1871,19 @@ void ASBorderDecorator_setColorAndWidthWithId_withId_withId_withInt_(ASBorderDec
   ASBorderDecorator_nativeSetColorAndWidthWithId_withId_withId_withInt_(self, mypath, paint, ASViewImpl_getColorWithId_(borderColor), width);
 }
 
-void ASBorderDecorator_nativeSetColorAndWidthWithId_withId_withId_withInt_(ASBorderDecorator *self, id mypath, id paint, id borderColor, jint width) {
+void ASBorderDecorator_nativeSetColorAndWidthWithId_withId_withId_withInt_(ASBorderDecorator *self, id mypath, id paint, id borderColor, int32_t width) {
   UIBezierPath * path = (UIBezierPath*) mypath;
   [path setLineWidth: width];
   [((UIColor*)borderColor) setStroke];
 }
 
-void ASBorderDecorator_setDottedEffectWithId_withId_withInt_withInt_(ASBorderDecorator *self, id mypath, id paint, jint radius, jint defaultDashSpacing) {
+void ASBorderDecorator_setDottedEffectWithId_withId_withInt_withInt_(ASBorderDecorator *self, id mypath, id paint, int32_t radius, int32_t defaultDashSpacing) {
   UIBezierPath * path = (UIBezierPath*) mypath;
   //CGFloat dashes[] = { [border getDashWidth], [border getDashSpacing] };
   //[path setLineDash:dashes count:2 phase:0];
 }
 
-void ASBorderDecorator_setDashedEffectWithId_withId_withInt_withInt_(ASBorderDecorator *self, id mypath, id paint, jint dashWidth, jint dashSpacing) {
+void ASBorderDecorator_setDashedEffectWithId_withId_withInt_withInt_(ASBorderDecorator *self, id mypath, id paint, int32_t dashWidth, int32_t dashSpacing) {
   UIBezierPath * path = (UIBezierPath*) mypath;
   CGFloat dashes[] = { dashWidth, dashSpacing};
   [path setLineDash:dashes count:2 phase:0];
@@ -1882,7 +1893,7 @@ void ASBorderDecorator_nativeInvalidateWithId_(ASBorderDecorator *self, id view)
   [((UIView*)view) setNeedsDisplay];
 }
 
-void ASBorderDecorator_createMaskLayerWithId_withBoolean_(ASBorderDecorator *self, id mypath, jboolean isWrappedWidget) {
+void ASBorderDecorator_createMaskLayerWithId_withBoolean_(ASBorderDecorator *self, id mypath, bool isWrappedWidget) {
   UIBezierPath * path = (UIBezierPath*) mypath;
   CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
   maskLayer.path = path.CGPath;
@@ -1894,12 +1905,12 @@ void ASBorderDecorator_createMaskLayerWithId_withBoolean_(ASBorderDecorator *sel
   }
 }
 
-void ASBorderDecorator_setCornerRadiusOnSuperViewWithFloat_(ASBorderDecorator *self, jfloat topLeftRadius) {
+void ASBorderDecorator_setCornerRadiusOnSuperViewWithFloat_(ASBorderDecorator *self, float topLeftRadius) {
   ((UIView*) self->view_).superview.layer.cornerRadius = topLeftRadius;
   ((UIView*) self->view_).superview.clipsToBounds = YES;
 }
 
-void ASBorderDecorator_setCornerRadiusOnViewWithFloat_(ASBorderDecorator *self, jfloat topLeftRadius) {
+void ASBorderDecorator_setCornerRadiusOnViewWithFloat_(ASBorderDecorator *self, float topLeftRadius) {
   ((UIView*) self->view_).layer.cornerRadius = topLeftRadius;
   ((UIView*) self->view_).clipsToBounds = YES;
 }
@@ -1909,17 +1920,17 @@ void ASBorderDecorator_setFrameWithId_(ASBorderDecorator *self, id object) {
   [self setMaskLayerWithId:object withId:path];
 }
 
-void ASBorderDecorator_quadToWithId_withFloat_withFloat_withFloat_withFloat_(ASBorderDecorator *self, id mypath, jfloat x1, jfloat y1, jfloat x2, jfloat y2) {
+void ASBorderDecorator_quadToWithId_withFloat_withFloat_withFloat_withFloat_(ASBorderDecorator *self, id mypath, float x1, float y1, float x2, float y2) {
   UIBezierPath * path = (UIBezierPath*) mypath;
   [path addLineToPoint:CGPointMake(x2, y2)];
 }
 
-void ASBorderDecorator_moveToWithId_withFloat_withFloat_(ASBorderDecorator *self, id mypath, jfloat x, jfloat y) {
+void ASBorderDecorator_moveToWithId_withFloat_withFloat_(ASBorderDecorator *self, id mypath, float x, float y) {
   UIBezierPath * path = (UIBezierPath*) mypath;
   [path moveToPoint:CGPointMake(x, y)];
 }
 
-void ASBorderDecorator_lineToWithId_withFloat_withFloat_(ASBorderDecorator *self, id mypath, jfloat x, jfloat y) {
+void ASBorderDecorator_lineToWithId_withFloat_withFloat_(ASBorderDecorator *self, id mypath, float x, float y) {
   UIBezierPath * path = (UIBezierPath*) mypath;
   [path addLineToPoint:CGPointMake(x, y)];
 }
@@ -1937,53 +1948,55 @@ void ASBorderDecorator_closePathWithId_(ASBorderDecorator *self, id mypath) {
 void ASBorderDecorator_addCommandIfNeeded(ASBorderDecorator *self) {
 }
 
-jfloat ASBorderDecorator_adjustOffsetWithNSString_withFloat_(ASBorderDecorator *self, NSString *where, jfloat offset) {
+float ASBorderDecorator_adjustOffsetWithNSString_withFloat_(ASBorderDecorator *self, NSString *where, float offset) {
   return offset;
 }
 
-jboolean ASBorderDecorator_isBorderStatefulWithASBorder_(ASBorderDecorator *self, ASBorder *border) {
+bool ASBorderDecorator_isBorderStatefulWithASBorder_(ASBorderDecorator *self, ASBorder *border) {
   return border != nil && [border getColor] != nil && [[border getColor] isKindOfClass:[ADColorStateList class]] && [((ADColorStateList *) nil_chk(((ADColorStateList *) cast_chk([border getColor], [ADColorStateList class])))) isStateful];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBorderDecorator)
 
+J2OBJC_NAME_MAPPING(ASBorderDecorator, "com.ashera.layout.decorator", "AS")
+
 @implementation ASBorderDecorator_Arc
 
-- (instancetype)initWithFloat:(jfloat)left
-                    withFloat:(jfloat)top
-                    withFloat:(jfloat)right
-                    withFloat:(jfloat)bottom
-                      withInt:(jint)startAngle
-                      withInt:(jint)sweepAngle {
+- (instancetype)initWithFloat:(float)left
+                    withFloat:(float)top
+                    withFloat:(float)right
+                    withFloat:(float)bottom
+                      withInt:(int32_t)startAngle
+                      withInt:(int32_t)sweepAngle {
   ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(self, left, top, right, bottom, startAngle, sweepAngle);
   return self;
 }
 
-- (jint)getEndAngle {
+- (int32_t)getEndAngle {
   return startAngle_ + sweepAngle_;
 }
 
-- (jfloat)getRadius {
+- (float)getRadius {
   return ((right_ - left_) / 2.0f);
 }
 
-- (jfloat)getWidth {
+- (float)getWidth {
   return right_ - left_;
 }
 
-- (jfloat)getHeight {
+- (float)getHeight {
   return bottom_ - top_;
 }
 
-- (jfloat)getMidPointX {
+- (float)getMidPointX {
   return left_ + ((right_ - left_) / 2.0f);
 }
 
-- (jfloat)getMidPointY {
+- (float)getMidPointY {
   return top_ + ((bottom_ - top_) / 2.0f);
 }
 
-- (jint)getStartAngle {
+- (int32_t)getStartAngle {
   return startAngle_;
 }
 
@@ -2025,7 +2038,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBorderDecorator)
 
 @end
 
-void ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(ASBorderDecorator_Arc *self, jfloat left, jfloat top, jfloat right, jfloat bottom, jint startAngle, jint sweepAngle) {
+void ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(ASBorderDecorator_Arc *self, float left, float top, float right, float bottom, int32_t startAngle, int32_t sweepAngle) {
   NSObject_init(self);
   self->left_ = left;
   self->top_ = top;
@@ -2035,11 +2048,11 @@ void ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_w
   self->startAngle_ = startAngle;
 }
 
-ASBorderDecorator_Arc *new_ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(jfloat left, jfloat top, jfloat right, jfloat bottom, jint startAngle, jint sweepAngle) {
+ASBorderDecorator_Arc *new_ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(float left, float top, float right, float bottom, int32_t startAngle, int32_t sweepAngle) {
   J2OBJC_NEW_IMPL(ASBorderDecorator_Arc, initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_, left, top, right, bottom, startAngle, sweepAngle)
 }
 
-ASBorderDecorator_Arc *create_ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(jfloat left, jfloat top, jfloat right, jfloat bottom, jint startAngle, jint sweepAngle) {
+ASBorderDecorator_Arc *create_ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(float left, float top, float right, float bottom, int32_t startAngle, int32_t sweepAngle) {
   J2OBJC_CREATE_IMPL(ASBorderDecorator_Arc, initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_, left, top, right, bottom, startAngle, sweepAngle)
 }
 

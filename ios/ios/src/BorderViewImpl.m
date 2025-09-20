@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSCSSBorderPlugin\src\main\java\com\ashera\cssborder\BorderViewImpl.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BorderViewImpl.h"
 #include "IAttributable.h"
 #include "ILifeCycleDecorator.h"
@@ -12,9 +17,16 @@
 #include "View.h"
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
+#include "java/lang/Integer.h"
 
 #include <UIKit/UIKit.h>
 #include "ASUIView.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASBorderViewImpl () {
@@ -387,3 +399,5 @@ ASBorderViewImpl *create_ASBorderViewImpl_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBorderViewImpl)
+
+J2OBJC_NAME_MAPPING(ASBorderViewImpl, "com.ashera.cssborder", "AS")

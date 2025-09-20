@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSCSSBorderPlugin\src\main\java\com\ashera\layout\decorator\BorderDecorator.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BorderDecorator")
@@ -23,6 +24,9 @@
 @class ASBorder;
 @class ASWidgetAttribute;
 @class IOSObjectArray;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIWidget;
 @protocol JavaUtilList;
 
@@ -35,10 +39,10 @@
 
 - (instancetype)init;
 
-- (void)createBorderWithFloat:(jfloat)x1
-                    withFloat:(jfloat)y1
-                    withFloat:(jfloat)x2
-                    withFloat:(jfloat)y2
+- (void)createBorderWithFloat:(float)x1
+                    withFloat:(float)y1
+                    withFloat:(float)x2
+                    withFloat:(float)y2
                        withId:(id)canvas
                        withId:(id)path
                        withId:(id)paint
@@ -55,35 +59,35 @@
 
 - (void)createBorderColorTopWithId:(id)color;
 
-- (void)createBorderDashSpacingWithInt:(jint)dashSpacing;
+- (void)createBorderDashSpacingWithInt:(int32_t)dashSpacing;
 
-- (void)createBorderDashSpacingBottomWithInt:(jint)dashSpacing;
+- (void)createBorderDashSpacingBottomWithInt:(int32_t)dashSpacing;
 
-- (void)createBorderDashSpacingLeftWithInt:(jint)dashSpacing;
+- (void)createBorderDashSpacingLeftWithInt:(int32_t)dashSpacing;
 
-- (void)createBorderDashSpacingRightWithInt:(jint)dashSpacing;
+- (void)createBorderDashSpacingRightWithInt:(int32_t)dashSpacing;
 
-- (void)createBorderDashSpacingTopWithInt:(jint)dashSpacing;
+- (void)createBorderDashSpacingTopWithInt:(int32_t)dashSpacing;
 
-- (void)createBorderDashWidthWithInt:(jint)dashWidth;
+- (void)createBorderDashWidthWithInt:(int32_t)dashWidth;
 
-- (void)createBorderDashWidthBottomWithInt:(jint)dashWidth;
+- (void)createBorderDashWidthBottomWithInt:(int32_t)dashWidth;
 
-- (void)createBorderDashWidthLeftWithInt:(jint)dashWidth;
+- (void)createBorderDashWidthLeftWithInt:(int32_t)dashWidth;
 
-- (void)createBorderDashWidthRightWithInt:(jint)dashWidth;
+- (void)createBorderDashWidthRightWithInt:(int32_t)dashWidth;
 
-- (void)createBorderDashWidthTopWithInt:(jint)dashWidth;
+- (void)createBorderDashWidthTopWithInt:(int32_t)dashWidth;
 
-- (void)createBorderRadiusWithFloat:(jfloat)radius;
+- (void)createBorderRadiusWithFloat:(float)radius;
 
-- (void)createBorderRadiusBottomLeftWithFloat:(jfloat)radius;
+- (void)createBorderRadiusBottomLeftWithFloat:(float)radius;
 
-- (void)createBorderRadiusBottomRightWithFloat:(jfloat)radius;
+- (void)createBorderRadiusBottomRightWithFloat:(float)radius;
 
-- (void)createBorderRadiusTopLeftWithFloat:(jfloat)radius;
+- (void)createBorderRadiusTopLeftWithFloat:(float)radius;
 
-- (void)createBorderRadiusTopRightWithFloat:(jfloat)radius;
+- (void)createBorderRadiusTopRightWithFloat:(float)radius;
 
 - (void)createBorderStyleWithNSString:(NSString *)style;
 
@@ -95,15 +99,15 @@
 
 - (void)createBorderStyleTopWithNSString:(NSString *)style;
 
-- (void)createBorderWidthWithInt:(jint)borderWith;
+- (void)createBorderWidthWithInt:(int32_t)borderWith;
 
-- (void)createBorderWidthBottomWithInt:(jint)borderWith;
+- (void)createBorderWidthBottomWithInt:(int32_t)borderWith;
 
-- (void)createBorderWidthLeftWithInt:(jint)borderWith;
+- (void)createBorderWidthLeftWithInt:(int32_t)borderWith;
 
-- (void)createBorderWidthRightWithInt:(jint)borderWith;
+- (void)createBorderWidthRightWithInt:(int32_t)borderWith;
 
-- (void)createBorderWidthTopWithInt:(jint)borderWith;
+- (void)createBorderWidthTopWithInt:(int32_t)borderWith;
 
 - (void)createMask;
 
@@ -156,43 +160,47 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderDecorator)
 
 @compatibility_alias ComAsheraLayoutDecoratorBorderDecorator ASBorderDecorator;
 
+
 #endif
 
 #if !defined (ASBorderDecorator_Arc_) && (INCLUDE_ALL_BorderDecorator || defined(INCLUDE_ASBorderDecorator_Arc))
 #define ASBorderDecorator_Arc_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+
 @interface ASBorderDecorator_Arc : NSObject {
  @public
-  jfloat left_;
-  jfloat top_;
-  jfloat right_;
-  jfloat bottom_;
-  jint startAngle_;
-  jint sweepAngle_;
+  float left_;
+  float top_;
+  float right_;
+  float bottom_;
+  int32_t startAngle_;
+  int32_t sweepAngle_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithFloat:(jfloat)left
-                    withFloat:(jfloat)top
-                    withFloat:(jfloat)right
-                    withFloat:(jfloat)bottom
-                      withInt:(jint)startAngle
-                      withInt:(jint)sweepAngle;
+- (instancetype)initWithFloat:(float)left
+                    withFloat:(float)top
+                    withFloat:(float)right
+                    withFloat:(float)bottom
+                      withInt:(int32_t)startAngle
+                      withInt:(int32_t)sweepAngle;
 
-- (jint)getEndAngle;
+- (int32_t)getEndAngle;
 
-- (jfloat)getHeight;
+- (float)getHeight;
 
-- (jfloat)getMidPointX;
+- (float)getMidPointX;
 
-- (jfloat)getMidPointY;
+- (float)getMidPointY;
 
-- (jfloat)getRadius;
+- (float)getRadius;
 
-- (jint)getStartAngle;
+- (int32_t)getStartAngle;
 
-- (jfloat)getWidth;
+- (float)getWidth;
 
 // Disallowed inherited constructors, do not use.
 
@@ -202,13 +210,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBorderDecorator)
 
 J2OBJC_EMPTY_STATIC_INIT(ASBorderDecorator_Arc)
 
-FOUNDATION_EXPORT void ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(ASBorderDecorator_Arc *self, jfloat left, jfloat top, jfloat right, jfloat bottom, jint startAngle, jint sweepAngle);
+FOUNDATION_EXPORT void ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(ASBorderDecorator_Arc *self, float left, float top, float right, float bottom, int32_t startAngle, int32_t sweepAngle);
 
-FOUNDATION_EXPORT ASBorderDecorator_Arc *new_ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(jfloat left, jfloat top, jfloat right, jfloat bottom, jint startAngle, jint sweepAngle) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ASBorderDecorator_Arc *new_ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(float left, float top, float right, float bottom, int32_t startAngle, int32_t sweepAngle) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ASBorderDecorator_Arc *create_ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(jfloat left, jfloat top, jfloat right, jfloat bottom, jint startAngle, jint sweepAngle);
+FOUNDATION_EXPORT ASBorderDecorator_Arc *create_ASBorderDecorator_Arc_initWithFloat_withFloat_withFloat_withFloat_withInt_withInt_(float left, float top, float right, float bottom, int32_t startAngle, int32_t sweepAngle);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASBorderDecorator_Arc)
+
 
 #endif
 

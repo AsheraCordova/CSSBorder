@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSCSSBorderPlugin\src\main\java\com\ashera\cssborder\BorderViewImpl.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BorderViewImpl")
@@ -21,6 +22,7 @@
 #include "IAttributable.h"
 
 @class ASWidgetAttribute;
+@class NSString;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
 
@@ -62,6 +64,7 @@ FOUNDATION_EXPORT ASBorderViewImpl *create_ASBorderViewImpl_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ASBorderViewImpl)
 
 @compatibility_alias ComAsheraCssborderBorderViewImpl ASBorderViewImpl;
+
 
 #endif
 

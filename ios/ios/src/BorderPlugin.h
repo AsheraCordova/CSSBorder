@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSCSSBorderPlugin\src\main\java\com\ashera\cssborder\BorderPlugin.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BorderPlugin")
@@ -39,6 +40,7 @@ FOUNDATION_EXPORT void ASBorderPlugin_initPlugin(void);
 J2OBJC_TYPE_LITERAL_HEADER(ASBorderPlugin)
 
 @compatibility_alias ComAsheraCssborderBorderPlugin ASBorderPlugin;
+
 
 #endif
 

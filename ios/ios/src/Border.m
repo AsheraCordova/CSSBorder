@@ -3,21 +3,35 @@
 //  source: D:\Java\git\core-ios-widgets\IOSCSSBorderPlugin\src\main\java\com\ashera\layout\decorator\Border.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Border.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASBorder () {
  @public
   id color_;
   NSString *style_;
-  jint width_;
-  jint dashWidth_;
-  jint dashSpacing_;
-  jfloat topLeftRadius_;
-  jfloat topRightRadius_;
-  jfloat bottomLeftRadius_;
-  jfloat bottomRightRadius_;
+  int32_t width_;
+  int32_t dashWidth_;
+  int32_t dashSpacing_;
+  float topLeftRadius_;
+  float topRightRadius_;
+  float bottomLeftRadius_;
+  float bottomRightRadius_;
 }
 
 @end
@@ -34,43 +48,43 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jfloat)getTopLeftRadius {
+- (float)getTopLeftRadius {
   return topLeftRadius_;
 }
 
-- (void)setTopLeftRadiusWithFloat:(jfloat)topLeftRadius {
+- (void)setTopLeftRadiusWithFloat:(float)topLeftRadius {
   self->topLeftRadius_ = topLeftRadius;
 }
 
-- (jfloat)getTopRightRadius {
+- (float)getTopRightRadius {
   return topRightRadius_;
 }
 
-- (void)setTopRightRadiusWithFloat:(jfloat)topRightRadius {
+- (void)setTopRightRadiusWithFloat:(float)topRightRadius {
   self->topRightRadius_ = topRightRadius;
 }
 
-- (jfloat)getBottomLeftRadius {
+- (float)getBottomLeftRadius {
   return bottomLeftRadius_;
 }
 
-- (void)setBottomLeftRadiusWithFloat:(jfloat)bottomLeftRadius {
+- (void)setBottomLeftRadiusWithFloat:(float)bottomLeftRadius {
   self->bottomLeftRadius_ = bottomLeftRadius;
 }
 
-- (jfloat)getBottomRightRadius {
+- (float)getBottomRightRadius {
   return bottomRightRadius_;
 }
 
-- (void)setBottomRightRadiusWithFloat:(jfloat)bottomRightRadius {
+- (void)setBottomRightRadiusWithFloat:(float)bottomRightRadius {
   self->bottomRightRadius_ = bottomRightRadius;
 }
 
-- (jint)getWidth {
+- (int32_t)getWidth {
   return width_;
 }
 
-- (void)setWidthWithInt:(jint)width {
+- (void)setWidthWithInt:(int32_t)width {
   self->width_ = width;
 }
 
@@ -90,19 +104,19 @@ J2OBJC_IGNORE_DESIGNATED_END
   self->style_ = style;
 }
 
-- (jint)getDashSpacing {
+- (int32_t)getDashSpacing {
   return dashSpacing_;
 }
 
-- (void)setDashSpacingWithInt:(jint)dashSpacing {
+- (void)setDashSpacingWithInt:(int32_t)dashSpacing {
   self->dashSpacing_ = dashSpacing;
 }
 
-- (jint)getDashWidth {
+- (int32_t)getDashWidth {
   return dashWidth_;
 }
 
-- (void)setDashWidthWithInt:(jint)dashWidth {
+- (void)setDashWidthWithInt:(int32_t)dashWidth {
   self->dashWidth_ = dashWidth;
 }
 
@@ -189,3 +203,5 @@ ASBorder *create_ASBorder_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBorder)
+
+J2OBJC_NAME_MAPPING(ASBorder, "com.ashera.layout.decorator", "AS")

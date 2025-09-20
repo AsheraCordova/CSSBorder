@@ -3,11 +3,22 @@
 //  source: D:\Java\git\core-ios-widgets\IOSCSSBorderPlugin\src\main\java\com\ashera\cssborder\BorderPlugin.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BorderDecorator.h"
 #include "BorderPlugin.h"
 #include "BorderViewImpl.h"
 #include "J2ObjC_source.h"
 #include "WidgetFactory.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ASBorderPlugin
@@ -59,3 +70,5 @@ void ASBorderPlugin_initPlugin() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBorderPlugin)
+
+J2OBJC_NAME_MAPPING(ASBorderPlugin, "com.ashera.cssborder", "AS")
