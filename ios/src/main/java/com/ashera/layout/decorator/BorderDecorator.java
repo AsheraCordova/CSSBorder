@@ -1,3 +1,18 @@
+//start - license
+/*
+ * Copyright (c) 2025 Ashera Cordova
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ */
+//end - license
 package com.ashera.layout.decorator;
 
 import java.util.Arrays;
@@ -1049,28 +1064,28 @@ public class BorderDecorator implements ILifeCycleDecorator {
         }
 	}
 	
-	public native void nativeCreateBorderLeft(Border borderLeft, Object wrapperRect) /*-[
+	public native void nativeCreateBorderLeft(Border borderLeft, Object wrapperRect)/*-[
 		CGRect rect = ((CGRectWrapper*) wrapperRect).rect;
 		CGPoint contentOffset = ((CGRectWrapper*) wrapperRect).contentOffset;
     	UIBezierPath * path = [UIBezierPath new];
   		[self createBorderLeftWithId:nil withId:path withId:nil withInt:rect.size.width withInt:rect.size.height + contentOffset.y withInt:0];
 	]-*/;
 	
-	public native void nativeCreateBorderRight(Border borderRight, Object wrapperRect) /*-[
+	public native void nativeCreateBorderRight(Border borderRight, Object wrapperRect)/*-[
 		CGRect rect = ((CGRectWrapper*) wrapperRect).rect;
 		CGPoint contentOffset = ((CGRectWrapper*) wrapperRect).contentOffset;
     	UIBezierPath * path = [UIBezierPath new];
   		[self createBorderRightWithId:nil withId:path withId:nil withInt:rect.size.width withInt:rect.size.height + contentOffset.y withInt:0];
 	]-*/;
 	
-	public native void nativeCreateBorderTop(Border borderTop, Object wrapperRect) /*-[
+	public native void nativeCreateBorderTop(Border borderTop, Object wrapperRect)/*-[
 		CGRect rect = ((CGRectWrapper*) wrapperRect).rect;
 		CGPoint contentOffset = ((CGRectWrapper*) wrapperRect).contentOffset;
     	UIBezierPath * path = [UIBezierPath new];
 		[self createBorderTopWithId:nil withId:path withId:nil withInt:rect.size.width withInt:rect.size.height + contentOffset.y withInt:0];
 	]-*/;
 	
-	public native void nativeCreateBorderBottom(Border borderBottom, Object wrapperRect) /*-[
+	public native void nativeCreateBorderBottom(Border borderBottom, Object wrapperRect)/*-[
 		CGRect rect = ((CGRectWrapper*) wrapperRect).rect;
 		CGPoint contentOffset = ((CGRectWrapper*) wrapperRect).contentOffset;
     	UIBezierPath * path = [UIBezierPath new];
@@ -1083,12 +1098,12 @@ public class BorderDecorator implements ILifeCycleDecorator {
 	private void reset(Object path, Object paint) {
 	}
 
-	private native void setDefaultColor(BorderDecorator borderDecorator) /*-[
+	private native void setDefaultColor(BorderDecorator borderDecorator)/*-[
   		borderDecorator->defaultColor_ = [UIColor blackColor];
 	]-*/;
 	
 	// draw and reset method
-	private native void drawPath(Object canvas, Object mypath, Object paint) /*-[
+	private native void drawPath(Object canvas, Object mypath, Object paint)/*-[
 	  	UIBezierPath * path = (UIBezierPath*) mypath;
 		[path stroke];
 	]-*/;
@@ -1102,32 +1117,32 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		nativeSetColorAndWidth(mypath, paint, ViewImpl.getColor(borderColor), width);
 	}
 
-	private native void nativeSetColorAndWidth(Object mypath, Object paint, Object borderColor, int width) /*-[
+	private native void nativeSetColorAndWidth(Object mypath, Object paint, Object borderColor, int width)/*-[
     	UIBezierPath * path = (UIBezierPath*) mypath;
     	[path setLineWidth: width];
     	[((UIColor*)borderColor) setStroke];
 
 	]-*/;
 
-	private native void setDottedEffect(Object mypath, Object paint, int radius, int defaultDashSpacing) /*-[
+	private native void setDottedEffect(Object mypath, Object paint, int radius, int defaultDashSpacing)/*-[
 	    UIBezierPath * path = (UIBezierPath*) mypath;
 		//CGFloat dashes[] = { [border getDashWidth], [border getDashSpacing] };
       	//[path setLineDash:dashes count:2 phase:0];
 	]-*/;
 
 
-	private native void setDashedEffect(Object mypath, Object paint, int dashWidth, int dashSpacing) /*-[
+	private native void setDashedEffect(Object mypath, Object paint, int dashWidth, int dashSpacing)/*-[
     	UIBezierPath * path = (UIBezierPath*) mypath;
 		CGFloat dashes[] = { dashWidth, dashSpacing};
   		[path setLineDash:dashes count:2 phase:0];
 	]-*/;
 
 
-    private native void nativeInvalidate(Object view) /*-[
+    private native void nativeInvalidate(Object view)/*-[
     	[((UIView*)view) setNeedsDisplay];
 	]-*/;
 
-	private native void createMaskLayer(Object mypath, boolean isWrappedWidget) /*-[
+	private native void createMaskLayer(Object mypath, boolean isWrappedWidget)/*-[
 	  	UIBezierPath * path = (UIBezierPath*) mypath;
 	  	CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
 	  	maskLayer.path = path.CGPath;
@@ -1139,45 +1154,45 @@ public class BorderDecorator implements ILifeCycleDecorator {
 	  	}
 	]-*/;
 
-	private native void setCornerRadiusOnSuperView(float topLeftRadius) /*-[
+	private native void setCornerRadiusOnSuperView(float topLeftRadius)/*-[
 		((UIView*) self->view_).superview.layer.cornerRadius = topLeftRadius;
 		((UIView*) self->view_).superview.clipsToBounds = YES;
 	]-*/;
 	
-	private native void setCornerRadiusOnView(float topLeftRadius) /*-[
+	private native void setCornerRadiusOnView(float topLeftRadius)/*-[
 		((UIView*) self->view_).layer.cornerRadius = topLeftRadius;
 		((UIView*) self->view_).clipsToBounds = YES;
 	]-*/;
 	
 
-	private native void setFrame(Object object) /*-[
+	private native void setFrame(Object object)/*-[
 	   	UIBezierPath * path = [UIBezierPath new];
     	[self setMaskLayerWithId:object withId:path];
 	]-*/;
 	
 	// path methods
-	private native void quadTo(Object mypath, float x1, float y1, float x2, float y2) /*-[
+	private native void quadTo(Object mypath, float x1, float y1, float x2, float y2)/*-[
 		UIBezierPath * path = (UIBezierPath*) mypath;
 	  	[path addLineToPoint:CGPointMake(x2, y2)];
 	]-*/;
 	
-	private native void moveTo(Object mypath, float x, float y)  /*-[
+	private native void moveTo(Object mypath, float x, float y) /*-[
 		UIBezierPath * path = (UIBezierPath*) mypath;
 	 	[path moveToPoint:CGPointMake(x, y)];
 	]-*/;
 	
-	private native void lineTo(Object mypath, float x, float y)  /*-[
+	private native void lineTo(Object mypath, float x, float y) /*-[
 		UIBezierPath * path = (UIBezierPath*) mypath;
 	  	[path addLineToPoint:CGPointMake(x, y)];	
 	]-*/;
 	
 	
-	private native void arcTo(Object mypath, Arc arc) /*-[
+	private native void arcTo(Object mypath, Arc arc)/*-[
 		UIBezierPath * path = (UIBezierPath*) mypath;
 		[path addArcWithCenter:CGPointMake([arc getMidPointX], [arc getMidPointY]) radius:[arc getRadius] startAngle:degreesToRadians([arc getStartAngle]) endAngle:degreesToRadians([arc getEndAngle]) clockwise:YES];
 	]-*/;
 
-	private native void closePath(Object mypath) /*-[
+	private native void closePath(Object mypath)/*-[
 		UIBezierPath * path = (UIBezierPath*) mypath;
 		[path closePath];
 	]-*/;
