@@ -33,6 +33,7 @@ public class BorderViewImpl implements com.ashera.widget.IAttributable {
 	// start - body
 	public final static String LOCAL_NAME = "BorderView"; 
 	private IWidget w;
+	
 	private BorderViewImpl(IWidget widget) {
 		this.w = widget;
 	}
