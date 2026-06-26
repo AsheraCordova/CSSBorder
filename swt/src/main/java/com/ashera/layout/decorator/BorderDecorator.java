@@ -1057,7 +1057,6 @@ public class BorderDecorator implements ILifeCycleDecorator {
 		private void drawBorder(org.eclipse.swt.widgets.Event event) {
 	        GC canvas = event.gc;
 	        BorderDecorator.this.drawBorder(canvas);
-	        canvas.dispose();
 		}
 	}
 	
